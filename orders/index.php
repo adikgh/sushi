@@ -122,7 +122,7 @@
 									</div> -->
 									<!-- <div class="uc_uin_other fr_price"><?=$buy_d['total']?></div> -->
 									<div class="uc_uin_other fr_price"><?=$buy_d['total'] + $buy_d['pay_delivery']?></div>
-									<div class="uc_uin_other fr_price"><?=$buy_d['pay_qr']?></div>
+									<div class="uc_uin_other fr_price"><?=$buy_d['pay_qr'] + $buy_d['pay_delivery']?> </div>
 									<div class="uc_uin_other fr_price"><?=$buy_d['total'] - $buy_d['pay_qr']?></div>
 									<!-- <div class="uc_uin_other fr_price"><?=$buy_d['pay_delivery']?></div> -->
 									<div class="uc_uin_other fr_price"><?=($buy_d['pay_delivery']?$buy_d['pay_delivery'] + 500:0)?></div>
