@@ -138,10 +138,6 @@
 			</div>
 			<div class="pop_bl_cl">
 				<div class="form_c">
-					<div class="cashbox_pay_btotol">
-						<div class="form_span">Общая сумма:</div>
-						<div class="cashbox_pay_btotol_c fr_price" data-val="<?=$total?>"><?=$total?></div>
-					</div>
 
 					<div class="">
 						<div class="form_im">
@@ -149,35 +145,43 @@
 							<input type="tel" class="form_txt fr_number2 order_number_sel" placeholder="0" value="" data-val="">
 							<!-- <i class="fal fa-tenge form_icon"></i> -->
 						</div>
-					</div>
-
-					<div class="form_im">
-						<div class="form_span">Тип оплаты:</div>
-						<div class="form_im_slo payment_method" data-type-name="qr">
-							<div class="form_im_slo_i form_im_slo_act" data-type="qr">Kaspi QR</div>
-							<div class="form_im_slo_i" data-type="cash">Наличные</div>
-							<!-- <div class="form_im_slo_i" data-type="transfer">Перевод</div> -->
-							<!-- <div class="form_im_slo_i" data-type="cash">Наличные</div> -->
-							<!-- <div class="form_im_slo_i" data-type="card">Банковская карта</div> -->
-							<div class="form_im_slo_i" data-type="mixed">Смешанный</div>
-						</div>
-					</div>
-					<div class="cashbox_pay_btype">
-						<div class="form_im btype_qr">
-							<div class="form_span">Kaspi QR:</div>
-							<input type="tel" class="form_txt fr_price " disabled placeholder="0" value="<?=$total?>" data-val="<?=$total?>">
+						<div class="form_im ">
+							<div class="form_span">Доставка:</div>
+							<input type="tel" class="form_txt fr_price btype_delivery" placeholder="0" data-val="0">
 							<i class="fal fa-tenge form_icon"></i>
 						</div>
-						<div class="form_im btype_transfer dsp_n ">
+					</div>
+
+					<br><br>
+					
+					<div class="cashbox_pay_btotol">
+						<div class="form_span">Общая сумма:</div>
+						<div class="cashbox_pay_btotol_c fr_price" data-val="<?=$total?>" data-on-val="<?=$total?>"><?=$total?></div>
+					</div>
+
+					<!-- <div class="form_im">
+						<div class="form_span">Тип оплаты:</div>
+						<div class="form_im_slo payment_method" data-type-name="qr">
+							<div class="form_im_slo_i form_im_slo_act" data-type="qr">Предоплата</div>
+							<div class="form_im_slo_i" data-type="cash">Наличные</div>
+							<div class="form_im_slo_i" data-type="transfer">Перевод</div>
+							<div class="form_im_slo_i" data-type="cash">Наличные</div>
+							<div class="form_im_slo_i" data-type="card">Банковская карта</div>
+							<div class="form_im_slo_i" data-type="mixed">Смешанный</div>
+						</div>
+					</div> -->
+					<div class="cashbox_pay_btype">
+						<div class="form_im btype_qr">
+							<div class="form_span">Предоплата:</div>
+							<input type="tel" class="form_txt fr_price " placeholder="0" value="<?=$total?>" data-val="<?=$total?>">
+							<i class="fal fa-tenge form_icon"></i>
+						</div>
+						<div class="form_im btype_transfer ">
 							<div class="form_span">Наличные:</div>
 							<input type="tel" class="form_txt fr_price " placeholder="0" data-val="0">
 							<i class="fal fa-tenge form_icon"></i>
 						</div>
-						<div class="form_im btype_delivery">
-							<div class="form_span">Доставка:</div>
-							<input type="tel" class="form_txt fr_price " placeholder="0" data-val="0">
-							<i class="fal fa-tenge form_icon"></i>
-						</div>
+
 						<!-- <div class="form_im btype_transfer dsp_n ">
 							<div class="form_span">Перевод:</div>
 							<input type="tel" class="form_txt fr_price " placeholder="0">

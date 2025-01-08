@@ -26,7 +26,7 @@
 							</div>
 							<div class="ub1_lti lazy_img" data-src="/assets/uploads/users/<?=@$user['img']?>"><? if (!@$user['img']): ?><i class="fal fa-user"></i><? endif ?></div>
 						</div>
-						<div class="menu_c">
+						<!-- <div class="menu_c">
 							<a class="menu_ci" href="/products/">
 								<div class="menu_cin"><i class="fal fa-boxes-alt"></i></div>
 								<div class="menu_cih">Корректировка</div>
@@ -47,7 +47,7 @@
 								<div class="menu_cin"><i class="fal fa-sign-out"></i></div>
 								<div class="menu_cih">Выход</div>
 							</a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

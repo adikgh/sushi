@@ -101,47 +101,17 @@
 	if(isset($_GET['cashbox_pay'])) {
 		$id = strip_tags($_POST['id']);
 		$cashbox_number = strip_tags($_POST['number']);
-		$payment_method = strip_tags($_POST['payment_method']);
+		// $payment_method = strip_tags($_POST['payment_method']);
+		$total = strip_tags($_POST['total']);
 		$qr = strip_tags($_POST['qr']);
 		$cash = strip_tags($_POST['cash']);
 		$delivery = strip_tags($_POST['delivery']);
 
-      $total = 0; $quantity = 0;
-      $rr = db::query("select * from retail_orders_products where order_id = '$id'");
-		if (mysqli_num_rows($rr)) {
-         while ($rr_d = mysqli_fetch_array($rr)) {
-            $rr_quantity = $rr_d['quantity'];
-            // $pitem_id = $rr_d['product_item_id'];
-            // $pq_id = (mysqli_fetch_array(db::query("select * from product_item_quantity where item_id = '$pitem_id' limit 1")))['id'];
-            // $upd = db::query("UPDATE `product_item_quantity` SET quantity = quantity - '$rr_quantity' WHERE id = '$pq_id'");
-            
-            $total = $total + ($rr_d['quantity'] * $rr_d['price']);
-            $quantity = $quantity + $rr_d['quantity'];
-         }
-         if ($total > 0 && $quantity > 0) {
+      if ($delivery) $upd = db::query("UPDATE `retail_orders` SET `number` = '$cashbox_number', `paid` = 1, `total` = '$total', `pay_qr` = '$qr', `pay_cash` = '$cash',`pay_delivery` = '$delivery', `upd_dt` = '$datetime' WHERE `id`='$id'");
+      else $upd = db::query("UPDATE `retail_orders` SET `number` = '$cashbox_number', `paid` = 1, `total` = '$total', `pay_qr` = '$qr', `pay_cash` = '$cash', `order_status` = 2, `branch_id` = 1, `upd_dt` = '$datetime' WHERE `id`='$id'");
+      $ins = db::query("INSERT INTO `retail_orders`(`user_id`) VALUES ('$user_id')");
+      if ($upd && $ins) echo 'yes';
 
-		      // $cashbox_number = (mysqli_fetch_assoc(db::query("SELECT * FROM `retail_orders` order by number desc")))['number'] + 1;
-
-            if ($delivery) $upd = db::query("UPDATE `retail_orders` SET `number` = '$cashbox_number', `paid` = 1, `payment_method` = '$payment_method', `total` = '$total', `pay_qr` = '$qr', `pay_cash` = '$cash',`pay_delivery` = '$delivery', `upd_dt` = '$datetime' WHERE `id`='$id'");
-            else $upd = db::query("UPDATE `retail_orders` SET `number` = '$cashbox_number', `paid` = 1, `payment_method` = '$payment_method', `total` = '$total', `pay_qr` = '$qr', `pay_cash` = '$cash', `order_status` = 2, `branch_id` = 1, `upd_dt` = '$datetime' WHERE `id`='$id'");
-            $ins = db::query("INSERT INTO `retail_orders`(`user_id`) VALUES ('$user_id')");
-            if ($upd && $ins) echo 'yes';
-
-            // $arr = array(
-            //    // 'Тип: ' => 'Новый продажа',
-            //    'Номер продажи: '	=> $id,
-            //    'Тип оплаты: '	=> $payment_method,
-            //    'Сумма: ' => $total.' тг',
-            //    'Количество: '	=> $quantity.' шт',
-            //    'Продавец: ' => $user['name'],
-            // );
-            // foreach($arr as $key => $value) {$txt .= "<b>".$key."</b> ".$value."%0A";};
-            // $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
-            // // if ($sendToTelegram) echo "yes"; else echo "error";
-
-         } else echo 0;
-      } else echo 0;
-      
       exit();
 	}
 

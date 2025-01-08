@@ -291,8 +291,8 @@ $(document).ready(function() {
          // $('.cashbox_pay_bsem').removeClass('dsp_n')
       }
 
-      $('.btype_delivery').removeClass('dsp_n')
-      $('.btype_delivery input').removeAttr('disabled')
+      // $('.btype_delivery').removeClass('dsp_n')
+      // $('.btype_delivery input').removeAttr('disabled')
 
 	})
 
@@ -306,6 +306,17 @@ $(document).ready(function() {
       sum = Number($('.cashbox_pay_btotol_c').attr('data-val'))
       change = total - sum
       if (change > 0) $('.cashbox_pay_bsems').html(change + ' тг')
+   })
+
+
+   $('html').on('input', '.btype_delivery', function () {
+      delivery = Number($('.btype_delivery').attr('data-val'))
+      sum = Number($('.cashbox_pay_btotol_c').attr('data-on-val'))
+      $('.cashbox_pay_btotol_c').attr('data-val', delivery + sum)
+      $('.cashbox_pay_btotol_c').html((delivery + sum) + ' тг')
+      $('.btype_qr input').val(delivery + sum)
+      $('.btype_qr input').attr('data-val', delivery + sum)
+      $('.cashbox_pay_bsemt').html((delivery + sum) + ' тг')
    })
 
 
@@ -342,10 +353,11 @@ $(document).ready(function() {
          data: ({ 
             id: btn.data('id'),
             number: $('.order_number_sel').attr('data-val'),
-            payment_method: $('.payment_method').attr('data-type-name'),
+            // payment_method: $('.payment_method').attr('data-type-name'),
+            total: $('.cashbox_pay_btotol_c').attr('data-val'),
             qr: $('.btype_qr input').attr('data-val'),
             cash: $('.btype_transfer input').attr('data-val'),
-            delivery: $('.btype_delivery input').attr('data-val'),
+            delivery: $('.btype_delivery').attr('data-val'),
          }),
          success: function(data){
             if (btn.attr('data-type') == 'check') {
