@@ -60,14 +60,16 @@
 	<div class="">
 		<div class="bl_c">
 
+			<br><br><br>
 			
-			<!-- <div class="">
+			<div class="">
 				<div class="btn_sel btn_sel2">
-					<a class="<?=($type!='return'?'btn_sel_act':'')?>" href="?type=main" >Продажи</a>
-					<a class="<?=($type=='return'?'btn_sel_act':'')?>" href="?type=return">Возврат</a>
+					<div class="btn">Новый заказ</div>
+					<!-- <a class="<?=($type!='return'?'btn_sel_act':'')?>" href="?type=main" >Продажи</a> -->
+					<!-- <a class="<?=($type=='return'?'btn_sel_act':'')?>" href="?type=return">Возврат</a> -->
 				</div>
 			</div>
-			<br> -->
+			<br>
 
 			<!--  -->
 
@@ -94,8 +96,8 @@
 						<div class="uc_uh_other">Остаток</div>
 						<!-- <div class="uc_uh_other">Количество</div> -->
 						<!-- <div class="uc_uh_name">Продавец</div> -->
+						<div class="uc_uh_cn"></div>
 					</div>
-					<div class="uc_uh_cn"></div>
 				</div>
 				<div class="uc_uc">
 					<? if ($orders != ''): ?>
@@ -146,25 +148,11 @@
 											<div class="uc_ui_phone"><?=fun::user_staff_name($user_right['staff_id'])?></div>
 										</div>
 									</div> -->
+									<div class="uc_uib">
+										<div class="uc_uibo on_delete" data-id="<?=$buy_d['id']?>"><i class="fal fa-trash-alt"></i></div>
+									</div>
 								</div>
 
-								<!-- <div class="uc_uib">
-									<div class="uc_uibo"><i class="fal fa-ellipsis-v"></i></div>
-									<div class="menu_c uc_uibs">
-										<a class="menu_ci " href="#">
-											<div class="menu_cin"><i class="fal fa-external-link"></i></div>
-											<div class="menu_cih">Открыть</div>
-										</a>
-										<div class="menu_ci " data-id="<?=$buy_d['id']?>">
-											<div class="menu_cin"><i class="fal fa-undo-alt"></i></div>
-											<div class="menu_cih">Возврат</div>
-										</div>
-										<div class="menu_ci uc_uib_del " data-id="<?=$buy_d['id']?>">
-											<div class="menu_cin"><i class="fal fa-trash-alt"></i></div>
-											<div class="menu_cih">Удалить</div>
-										</div>
-									</div>
-								</div> -->
 							</div>
 						<? endwhile ?>
 					

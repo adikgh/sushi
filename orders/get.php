@@ -54,6 +54,15 @@
       exit();
 	}
 
+   // 
+	if(isset($_GET['delete'])) {
+      $id = strip_tags($_POST['id']);
+      $del = db::query("DELETE FROM `retail_orders` where id = '$id'");
+      if ($del) echo 'yes';
+
+      exit();
+	}
+
 
 
    // 
