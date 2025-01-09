@@ -29,6 +29,12 @@
                         td{
                             padding: 10px;
                         }
+
+                        .form_txt{
+                            padding: 5px;
+                            min-width: 120px;
+                            width: 120px;
+                        }
                     </style>
 
                     <tbody>
@@ -68,8 +74,12 @@
                                 <td><?=mysqli_num_rows($orders)?></td>
                                 <td class="fr_price"><?=$allorder['total']?></td>
                                 <td class="fr_price"><?=$allorder['pay_qr']?></td>
+                                <td class="fr_price"><?=$allorder['total'] - $allorder['pay_qr']?></td>
                                 <td class="fr_price"><?=$allorder['pay_delivery']?></td>
-                                <td class="fr_price"></td>
+                                <td class="fr_price"><?=$allorder['total'] - $allorder['pay_qr'] - $allorder['pay_delivery']?></td>
+                                <td class="">
+							        <input type="tel" class="form_txt fr_price btype_cash" placeholder="0" data-val="0">
+                                </td>
                                 <td class="fr_price"></td>
                                 <td class="fr_price"></td>
                             </tr>
@@ -82,18 +92,22 @@
                             <td></td>
                             <td>Саны</td>
                             <td>Общий</td>
-                            <td>Оплата</td>
+                            <td>Предоплата</td>
+                            <td>Остаток</td>
                             <td>Зарплата</td>
-                            <td>Каспи</td>
-                            <td>Наличный</td>
+                            <td>На кассу</td>
                             <td>Расходы</td>
+                            <td>Наличный</td>
+                            <td>Каспи</td>
                         </tr>
                         <tr>
                             <td>Барлыгы</td>
                             <td><?=$onw['number']?></td>
                             <td class="fr_price"><?=$onw['total']?></td>
                             <td class="fr_price"><?=$onw['pay_qr']?></td>
+                            <td class="fr_price"><?=$onw['total'] - $onw['pay_qr']?></td>
                             <td class="fr_price"><?=$onw['pay_delivery']?></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
