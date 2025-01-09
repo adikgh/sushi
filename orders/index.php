@@ -64,7 +64,7 @@
 			
 			<div class="">
 				<div class="btn_sel btn_sel2">
-					<div class="btn">Новый заказ</div>
+					<div class="btn cashbox_pay">Новый заказ</div>
 					<!-- <a class="<?=($type!='return'?'btn_sel_act':'')?>" href="?type=main" >Продажи</a> -->
 					<!-- <a class="<?=($type=='return'?'btn_sel_act':'')?>" href="?type=return">Возврат</a> -->
 				</div>
@@ -190,3 +190,48 @@
 	</div>
 
 <? include "../block/footer.php"; ?>
+
+
+	<!--  -->
+	<div class="pop_bl pop_bl2 cashbox_pay_block">
+		<div class="pop_bl_a cashbox_pay_back"></div>
+		<div class="pop_bl_c">
+			<div class="head_c">
+				<h4>Оплата</h4>
+				<div class="btn btn_dd cashbox_pay_back"><i class="fal fa-times"></i></div>
+			</div>
+			<div class="pop_bl_cl">
+				<div class="form_c">
+
+					<div class="">
+						<div class="form_im">
+							<div class="form_span">Номер заказа:</div>
+							<input type="tel" class="form_txt fr_number2 order_number_sel" placeholder="0" value="" data-val="">
+							<i class="fal fa-solar-panel form_icon"></i>
+						</div>
+						<div class="form_im ">
+							<div class="form_span">Общий цена:</div>
+							<input type="tel" class="form_txt fr_price btype_totol" placeholder="0" data-val="0">
+							<i class="fal fa-tenge form_icon"></i>
+						</div>
+						<div class="form_im ">
+							<div class="form_span">Доставка:</div>
+							<input type="tel" class="form_txt fr_price btype_delivery" placeholder="0" data-val="0">
+							<i class="fal fa-tenge form_icon"></i>
+						</div>
+						<div class="form_im ">
+							<div class="form_span">Предоплата:</div>
+							<input type="tel" class="form_txt fr_price btype_qr" placeholder="0" value="" data-val="">
+							<i class="fal fa-tenge form_icon"></i>
+						</div>
+					</div>
+
+					<div class="form_im">
+						<div class="btn cashbox_pay2" >Сақтау</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>

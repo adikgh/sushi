@@ -82,4 +82,73 @@ $(document).ready(function() {
 	})
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// cashbox_pay
+	$('.cashbox_pay').click(function(){
+		$('.cashbox_pay_block').addClass('pop_bl_act');
+		$('#html').addClass('ovr_h');
+	})
+	$('.cashbox_pay_back').click(function(){
+		$('.cashbox_pay_block').removeClass('pop_bl_act');
+		$('#html').removeClass('ovr_h');
+	})
+
+   // cashbox_pay
+	$('.cashbox_pay2').on('click', function () {
+		btn = $(this)
+      $.ajax({
+         url: "/orders/get.php?cashbox_pay",
+         type: "POST",
+         dataType: "html",
+         data: ({ 
+            number: $('.order_number_sel').attr('data-val'),
+            total: $('.btype_totol').attr('data-val'),
+            delivery: $('.btype_delivery').attr('data-val'),
+            qr: $('.btype_qr').attr('data-val'),
+         }),
+         success: function(data){
+            if (btn.attr('data-type') == 'check') {
+               
+            } else {
+               if (data == 'yes') location.reload();
+               else if (data == 0) mess('Вам необходимо заполнить все поля')
+            }
+            console.log(data);
+         },
+         beforeSend: function(){ },
+         error: function(data){ }
+      })
+	})
+
+
 }) // end jquery
