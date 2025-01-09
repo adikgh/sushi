@@ -63,13 +63,15 @@
 	if (@$_GET['status'] && @$_GET['staff']) {
 		$status = $_GET['status'];
 		$staff = $_GET['staff'];
-		$orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and order_status = '$status' and сourier_id  = '$staff' and user_id = '$user_id' order by number desc");
+		if ($staff == 'off') $orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and order_status = '$status' and сourier_id is null and user_id = '$user_id' order by number desc");
+		else $orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and order_status = '$status' and сourier_id  = '$staff' and user_id = '$user_id' order by number desc");
 	} elseif (@$_GET['status']) {
 		$status = $_GET['status'];
 		$orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and order_status = '$status' and user_id = '$user_id' order by number desc");
 	} elseif (@$_GET['staff']) {
 		$staff = $_GET['staff'];
-		$orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and сourier_id  = '$staff' and user_id = '$user_id' order by number desc");
+		if ($staff == 'off') $orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and сourier_id is null and user_id = '$user_id' order by number desc");
+		else $orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and сourier_id  = '$staff' and user_id = '$user_id' order by number desc");
 	} else $orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and user_id = '$user_id' order by number desc");
 
 
@@ -178,6 +180,7 @@
 							<div class="uc_uin_other">
 								<select name="staff" class="on_sort_staff" data-order-id="<?=$buy_d['id']?>" >
 									<option data-id="" value="">Барлығы</option>
+									<option data-id="off" <?=(@$_GET['staff'] == 'off'?'selected':'')?> value="">Таңдалмаған</option>
 									<? $staff = db::query("select * from user_staff where positions_id = 6"); ?>
 									<? while ($staff_d = mysqli_fetch_assoc($staff)): ?>
 										<? $staff_user_d = fun::user($staff_d['user_id']); ?>
