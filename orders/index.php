@@ -28,7 +28,7 @@
 	if ($page_result) {
 		// page number
 		$page = 1; if (@$_GET['page'] && is_int(intval(@$_GET['page']))) $page = @$_GET['page'];
-		$page_age = 50;
+		$page_age = 250;
 		$page_all = ceil($page_result / $page_age);
 		if ($page > $page_all) $page = $page_all;
 		$page_start = ($page - 1) * $page_age;
@@ -47,6 +47,11 @@
 		$orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and user_id = '$user_id' order by number desc limit $page_start, $page_age");
 	}
 
+
+
+	$allorder['total'] = 0;
+	$allorder['pay_qr'] = 0;
+	$allorder['pay_delivery'] = 0;
 
 
 	// site setting
@@ -73,33 +78,16 @@
 
 			<!--  -->
 
-			<div class="uc_u">
+			<div class="uc_u new_all_up">
 				<!-- <div class="uc_us">
 					<div class="form_im uc_usn">
 						<input type="text" placeholder="Поиск" class="sub_user_search_in">
 						<i class="fal fa-search form_icon"></i>
 					</div>
 				</div> -->
-				<div class="uc_uh">
-					<div class="uc_uh2">
-						<div class="uc_uh_number">#</div>
-						<!-- <? if ($type != 'return'): ?> <div class="uc_uh_other">Номер продажи</div>
-						<? else: ?> <div class="uc_uh_other">Номер возврата</div> <? endif ?> -->
-						<div class="uc_uh_other">Статус</div>
-						<div class="uc_uh_other">Курьер</div>
-						<!-- <div class="uc_uh_other">Сет бағасы</div> -->
-						<div class="uc_uh_other">Общий сумма</div>
-						<div class="uc_uh_other">Предоплата (QR)</div>
-						<div class="uc_uh_other">Қалғаны</div>
-						<!-- <div class="uc_uh_other">Доставка</div> -->
-						<div class="uc_uh_other">ЗП Курьер (Доставка)</div>
-						<div class="uc_uh_other">Остаток</div>
-						<!-- <div class="uc_uh_other">Количество</div> -->
-						<!-- <div class="uc_uh_name">Продавец</div> -->
-						<div class="uc_uh_cn"></div>
-					</div>
-				</div>
+				
 				<div class="uc_uc">
+
 					<? if ($orders != ''): ?>
 					<? if (mysqli_num_rows($orders) != 0): ?>
 						<? while ($buy_d = mysqli_fetch_assoc($orders)): ?>
@@ -126,44 +114,83 @@
 											<? endwhile ?>
 										</select>
 									</div>
-									<!-- <div class="uc_uin_other"><?=$buy_d['id']?></div> -->
-									<!-- <div class="uc_uin_date2">
-										<div class="uc_uin_date2_d"><?=date('d-m-y', strtotime($buy_d['upd_dt']))?></div>
-										<div class="uc_uin_date2_t"><?=date('h:i:s', strtotime($buy_d['upd_dt']))?></div>
-									</div> -->
-									<!-- <div class="uc_uin_other fr_price"><?=$buy_d['total']?></div> -->
 									<div class="uc_uin_other fr_price"><?=$buy_d['total']?></div>
 									<div class="uc_uin_other fr_price"><?=$buy_d['pay_qr']?> </div>
 									<div class="uc_uin_other fr_price"><?=$buy_d['total'] - $buy_d['pay_qr']?></div>
-									<!-- <div class="uc_uin_other fr_price"><?=$buy_d['pay_delivery']?></div> -->
 									<div class="uc_uin_other fr_price"><?=($buy_d['pay_delivery']?$buy_d['pay_delivery'] + 500:0)?></div>
 									<div class="uc_uin_other fr_price"><?=$buy_d['total'] - $buy_d['pay_delivery'] - 500?></div>
-									<!-- <div class="uc_uin_other fr_number3"><?=$buy_d['quantity']?></div> -->
-									<!-- <div class="uc_uiln">
-										<div class="uc_ui_icon lazy_img" data-src="/assets/uploads/users/<?=$user['img']?>">
-											<?=($user['img']!=null?'':'<i class="fal fa-user"></i>')?>
-										</div>
-										<div class="uc_uinu">
-											<div class="uc_ui_name"><?=$user['name']?> <?=$user['surname']?></div>
-											<div class="uc_ui_phone"><?=fun::user_staff_name($user_right['staff_id'])?></div>
-										</div>
-									</div> -->
 									<div class="uc_uib">
 										<div class="uc_uibo on_delete" data-id="<?=$buy_d['id']?>"><i class="fal fa-trash-alt"></i></div>
 									</div>
 								</div>
 
 							</div>
+
+							<? 
+								$allorder['total'] = $allorder['total'] + $buy_d['total'];
+								$allorder['pay_qr'] = $allorder['pay_qr'] + $buy_d['pay_qr'];
+								$allorder['pay_delivery'] = $allorder['pay_delivery'] + $buy_d['pay_delivery'];
+							?>
+
 						<? endwhile ?>
-					
-					<? else: ?>
-						<div class="ds_nr"><i class="fal fa-ghost"></i><p>НЕТ</p></div>
-					<? endif ?>
-					<? else: ?>
-						<div class="ds_nr"><i class="fal fa-ghost"></i><p>НЕТ</p></div>
-					<? endif ?>
+					<? else: ?> <div class="ds_nr"><i class="fal fa-ghost"></i><p>НЕТ</p></div> <? endif ?>
+					<? else: ?> div class="ds_nr"><i class="fal fa-ghost"></i><p>НЕТ</p></div> <? endif ?>
 
 				</div>
+				
+				<div class="uc_uc">
+					<div class="uc_ui " style="background-color: #f5f5f5;">
+						<div class="uc_uil2">
+							<div class="uc_ui_number">0</div>
+							<div class="uc_uin_other">
+								<select name="" id="" class="on_status" data-order-id="<?=$buy_d['id']?>" >
+									<option data-id="<?=$orders_status_d['id']?>" value="" >Барлығы</option>
+									<? $orders_status = db::query("select * from retail_orders_status"); ?>
+									<? while ($orders_status_d = mysqli_fetch_assoc($orders_status)): ?>
+										<option data-id="<?=$orders_status_d['id']?>" value="" ><?=$orders_status_d['name']?></option>
+									<? endwhile ?>
+								</select>
+							</div>
+							<div class="uc_uin_other">
+								<select name="" id="" class="on_staff" data-order-id="<?=$buy_d['id']?>" >
+									<option value="" >Барлығы</option>
+									<? $staff = db::query("select * from user_staff where positions_id = 6"); ?>
+									<? while ($staff_d = mysqli_fetch_assoc($staff)): ?>
+										<? $staff_user_d = fun::user($staff_d['user_id']); ?>
+										<option value="" data-id="<?=$staff_d['user_id']?>" ><?=$staff_user_d['name']?></option>
+									<? endwhile ?>
+								</select>
+							</div>
+							<div class="uc_uin_other fr_price"><?=$allorder['total']?></div>
+							<div class="uc_uin_other fr_price"><?=$allorder['pay_qr']?> </div>
+							<div class="uc_uin_other fr_price"><?=$allorder['total'] - $allorder['pay_qr']?></div>
+							<div class="uc_uin_other fr_price"><?=($allorder['pay_delivery']?$allorder['pay_delivery'] + 500:0)?></div>
+							<div class="uc_uin_other fr_price"><?=$allorder['total'] - $allorder['pay_delivery'] - 500?></div>
+							<div class="uc_uib"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="uc_uh">
+					<div class="uc_uh2">
+						<div class="uc_uh_number">#</div>
+						<!-- <? if ($type != 'return'): ?> <div class="uc_uh_other">Номер продажи</div>
+						<? else: ?> <div class="uc_uh_other">Номер возврата</div> <? endif ?> -->
+						<div class="uc_uh_other">Статус</div>
+						<div class="uc_uh_other">Курьер</div>
+						<!-- <div class="uc_uh_other">Сет бағасы</div> -->
+						<div class="uc_uh_other">Общий сумма</div>
+						<div class="uc_uh_other">Предоплата (QR)</div>
+						<div class="uc_uh_other">Қалғаны</div>
+						<!-- <div class="uc_uh_other">Доставка</div> -->
+						<div class="uc_uh_other">ЗП Курьер (Доставка)</div>
+						<div class="uc_uh_other">Остаток</div>
+						<!-- <div class="uc_uh_other">Количество</div> -->
+						<!-- <div class="uc_uh_name">Продавец</div> -->
+						<div class="uc_uh_cn"></div>
+					</div>
+				</div>
+
 			</div>
 
 			<? if (@$page_all > 1): ?>
