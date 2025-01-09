@@ -10,7 +10,7 @@
 	// site setting
 	$menu_name = 'main';
 	// $css = [''];
-	// $js = [''];
+	$js = ['kassa'];
 ?>
 <? include "../block/header.php"; ?>
 
@@ -34,6 +34,8 @@
                             padding: 5px;
                             min-width: 120px;
                             width: 120px;
+                            height: 34px;
+                            min-height: 34px;
                         }
                     </style>
 
@@ -76,12 +78,14 @@
                                 <td class="fr_price"><?=$allorder['pay_qr']?></td>
                                 <td class="fr_price"><?=$allorder['total'] - $allorder['pay_qr']?></td>
                                 <td class="fr_price"><?=$allorder['pay_delivery']?></td>
-                                <td class="fr_price"><?=$allorder['total'] - $allorder['pay_qr'] - $allorder['pay_delivery']?></td>
+                                <td class="fr_price btype_start" data-rask="0" data-start="<?=$allorder['total'] - $allorder['pay_qr'] - $allorder['pay_delivery']?>"><?=$allorder['total'] - $allorder['pay_qr'] - $allorder['pay_delivery']?></td>
+                                <td class="">
+							        <input type="tel" class="form_txt fr_price btype_rask" placeholder="0" data-val="0" >
+                                </td>
                                 <td class="">
 							        <input type="tel" class="form_txt fr_price btype_cash" placeholder="0" data-val="0">
                                 </td>
-                                <td class="fr_price"></td>
-                                <td class="fr_price"></td>
+                                <td class="fr_price btype_kaspi"><?=$allorder['total'] - $allorder['pay_qr'] - $allorder['pay_delivery']?></td>
                             </tr>
                         <? endwhile ?>
                     
@@ -107,8 +111,8 @@
                             <td class="fr_price"><?=$onw['pay_qr']?></td>
                             <td class="fr_price"><?=$onw['total'] - $onw['pay_qr']?></td>
                             <td class="fr_price"><?=$onw['pay_delivery']?></td>
-                            <td></td>
-                            <td></td>
+                            <td class="fr_price"><?=$onw['total'] - $onw['pay_qr'] - $onw['pay_delivery']?></td>
+                            <td class="fr_price or_rask"></td>
                             <td></td>
                             <td></td>
                         </tr>

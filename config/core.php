@@ -19,7 +19,7 @@
          // ini_set('session.cookie_lifetime', $time);
          session_set_cookie_params($time);
          session_start();
-         date_default_timezone_set('Asia/Almaty');
+         date_default_timezone_set('Asia/Aqtau');
          $this->authorize();
       }
 
@@ -62,7 +62,7 @@
 
    // setting
    $site = mysqli_fetch_array(db::query("select * from `site` where id = 1"));
-   $ver = 1.016;
+   $ver = 1.017;
    $site_set = [
       'menu' => true,
       'search' => true,
