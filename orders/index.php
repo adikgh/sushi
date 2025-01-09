@@ -3,6 +3,9 @@
 	// 
 	if (!$user_id) header('location: /');
 
+
+	$currentdate = date('Y-m-d');
+
    	$type = @$_GET['type'];
 
 	// filter user all
@@ -18,28 +21,32 @@
 	// 	$page_result = mysqli_num_rows($orders_all);
 	// }
 
-	$orders_all = db::query("select * from retail_orders where paid = 1 and user_id = '$user_id'");
+	$orders_all = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and user_id = '$user_id'");
 	$page_result = mysqli_num_rows($orders_all);
+	$orders = '';
 
-	// page number
-	$page = 1; if (@$_GET['page'] && is_int(intval(@$_GET['page']))) $page = @$_GET['page'];
-	$page_age = 50;
-	$page_all = ceil($page_result / $page_age);
-	if ($page > $page_all) $page = $page_all;
-	$page_start = ($page - 1) * $page_age;
-	$number = $page_start;
+	if ($page_result) {
+		// page number
+		$page = 1; if (@$_GET['page'] && is_int(intval(@$_GET['page']))) $page = @$_GET['page'];
+		$page_age = 50;
+		$page_all = ceil($page_result / $page_age);
+		if ($page > $page_all) $page = $page_all;
+		$page_start = ($page - 1) * $page_age;
+		$number = $page_start;
 
-	// filter cours
-	// if ($type != 'return') {
-	// 	if ($_GET['on'] == 1) $orders = db::query("select * from retail_orders where paid = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
-	// 	elseif ($_GET['off'] == 1) $orders = db::query("select * from retail_orders where paid = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
-	// 	else 
-	// } else {
-	// 	if ($_GET['on'] == 1) $orders = db::query("select * from retail_returns where returns = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
-	// 	elseif ($_GET['off'] == 1) $orders = db::query("select * from retail_returns where returns = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
-	// 	else $orders = db::query("select * from retail_returns where returns = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
-	// }
-	$orders = db::query("select * from retail_orders where paid = 1 and user_id = '$user_id' order by number desc limit $page_start, $page_age");
+		// filter cours
+		// if ($type != 'return') {
+		// 	if ($_GET['on'] == 1) $orders = db::query("select * from retail_orders where paid = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
+		// 	elseif ($_GET['off'] == 1) $orders = db::query("select * from retail_orders where paid = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
+		// 	else 
+		// } else {
+		// 	if ($_GET['on'] == 1) $orders = db::query("select * from retail_returns where returns = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
+		// 	elseif ($_GET['off'] == 1) $orders = db::query("select * from retail_returns where returns = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
+		// 	else $orders = db::query("select * from retail_returns where returns = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
+		// }
+		$orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and user_id = '$user_id' order by number desc limit $page_start, $page_age");
+	}
+
 
 
 	// site setting
@@ -52,6 +59,7 @@
 
 	<div class="">
 		<div class="bl_c">
+
 			
 			<!-- <div class="">
 				<div class="btn_sel btn_sel2">
@@ -90,6 +98,7 @@
 					<div class="uc_uh_cn"></div>
 				</div>
 				<div class="uc_uc">
+					<? if ($orders != ''): ?>
 					<? if (mysqli_num_rows($orders) != 0): ?>
 						<? while ($buy_d = mysqli_fetch_assoc($orders)): ?>
 							<? $number++; ?>
@@ -162,11 +171,14 @@
 					<? else: ?>
 						<div class="ds_nr"><i class="fal fa-ghost"></i><p>НЕТ</p></div>
 					<? endif ?>
+					<? else: ?>
+						<div class="ds_nr"><i class="fal fa-ghost"></i><p>НЕТ</p></div>
+					<? endif ?>
 
 				</div>
 			</div>
 
-			<? if ($page_all > 1): ?>
+			<? if (@$page_all > 1): ?>
 				<div class="uc_p">
 					<? if ($page > 1): ?> <a class="uc_pi" href="?<?=($type=='return'?'type=return&':'')?>page=<?=$page-1?>"><i class="fal fa-angle-left"></i></a> <? endif ?>
 					<a class="uc_pi <?=($page==1?'uc_pi_act':'')?>" href="?<?=($type=='return'?'type=return&':'')?>page=1">1</a>
