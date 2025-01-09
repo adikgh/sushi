@@ -118,7 +118,7 @@
 									<div class="uc_uin_other fr_price"><?=$buy_d['pay_qr']?> </div>
 									<div class="uc_uin_other fr_price"><?=$buy_d['total'] - $buy_d['pay_qr']?></div>
 									<div class="uc_uin_other fr_price"><?=($buy_d['pay_delivery']?$buy_d['pay_delivery'] + 500:0)?></div>
-									<div class="uc_uin_other fr_price"><?=$buy_d['total'] - $buy_d['pay_delivery'] - 500?></div>
+									<div class="uc_uin_other fr_price"><?=($buy_d['pay_delivery']?$buy_d['total'] - $buy_d['pay_delivery'] - 500:$buy_d['total'] - $buy_d['pay_delivery'])?></div>
 									<div class="uc_uib">
 										<div class="uc_uibo on_delete" data-id="<?=$buy_d['id']?>"><i class="fal fa-trash-alt"></i></div>
 									</div>
