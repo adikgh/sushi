@@ -80,6 +80,26 @@ $(document).ready(function() {
          error: function(data){ }
       })
 	})
+   
+   
+   
+   // 
+	$('.on_sort_status').on('change', function () {
+      var val = $(this).children('option:selected').attr('data-id');
+      const url = new URL(window.location);
+      url.searchParams.set('status', val); 
+      history.pushState(null, null, url);
+      location.reload();
+	})
+   
+   // 
+	$('.on_sort_staff').on('change', function () {
+      var val = $(this).children('option:selected').attr('data-id');
+      const url = new URL(window.location);
+      url.searchParams.set('staff', val); 
+      history.pushState(null, null, url);
+      location.reload();
+	})
 
 
 
