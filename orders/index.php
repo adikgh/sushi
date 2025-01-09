@@ -91,8 +91,6 @@
 	<div class="">
 		<div class="bl_c">
 
-			<br><br><br>
-			
 			<div class="">
 				<div class="btn_sel btn_sel2">
 					<div class="btn cashbox_pay">Новый заказ</div>
@@ -100,24 +98,16 @@
 					<!-- <a class="<?=($type=='return'?'btn_sel_act':'')?>" href="?type=return">Возврат</a> -->
 				</div>
 			</div>
+
 			<br>
 
-			<!--  -->
-
 			<div class="uc_u new_all_up">
-				<!-- <div class="uc_us">
-					<div class="form_im uc_usn">
-						<input type="text" placeholder="Поиск" class="sub_user_search_in">
-						<i class="fal fa-search form_icon"></i>
-					</div>
-				</div> -->
-				
+
 				<div class="uc_uc">
 
 					<? if ($orders != ''): ?>
 					<? if (mysqli_num_rows($orders) != 0): ?>
 						<? while ($buy_d = mysqli_fetch_assoc($orders)): ?>
-							<? // $number++; ?>
 
 							<div class="uc_ui">
 								<div class="uc_uil2" href="list.php?id=<?=$buy_d['id'].($type=='return'?'&type=return':'')?>">
@@ -211,6 +201,13 @@
 						<div class="uc_uh_cn"></div>
 					</div>
 				</div>
+
+				<!-- <div class="uc_us">
+					<div class="form_im uc_usn">
+						<input type="text" placeholder="Поиск" class="order_search_in">
+						<i class="fal fa-search form_icon"></i>
+					</div>
+				</div> -->
 
 			</div>
 

@@ -1,0 +1,108 @@
+<? include "../config/core.php";
+
+	// 
+	if (!$user_id) header('location: /');
+    $currentdate = date('Y-m-d');
+
+
+
+
+	// site setting
+	$menu_name = 'main';
+	// $css = [''];
+	// $js = [''];
+?>
+<? include "../block/header.php"; ?>
+
+	<div class="bl_c">
+
+			<div class="">
+
+                <br><br><br><br>
+				
+				<table border="1" style="">
+
+                    <style>
+                        tr{
+                            padding: 10px;
+                        }
+                        td{
+                            padding: 10px;
+                        }
+                    </style>
+
+                    <tbody>
+
+                        <? 
+                            $onw['number'] = 0;
+                            $onw['total'] = 0;
+                            $onw['pay_qr'] = 0;
+                            $onw['pay_delivery'] = 0;
+                            $staff = db::query("select * from user_staff where positions_id = 6");
+                        ?>
+                        <? while ($staff_d = mysqli_fetch_assoc($staff)): ?>
+                            <? $staff_user_d = fun::user($staff_d['user_id']); ?>
+                            <? $staff_id = $staff_d['user_id']; ?>
+                            <!-- <option value="" data-id="<?=$staff_d['user_id']?>" <?=($buy_d['сourier_id'] == $staff_d['user_id']?'selected':'')?>></option> -->
+                            
+                            <? $orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and сourier_id  = '$staff_id' order by number desc"); ?>
+                            <?
+                                $allorder['total'] = 0;
+                                $allorder['pay_qr'] = 0;
+                                $allorder['pay_delivery'] = 0;
+                               
+                                while ($buy_d = mysqli_fetch_assoc($orders)){
+                                    $allorder['total'] = $allorder['total'] + $buy_d['total'];
+								    $allorder['pay_qr'] = $allorder['pay_qr'] + $buy_d['pay_qr'];
+								    $allorder['pay_delivery'] = $allorder['pay_delivery'] + $buy_d['pay_delivery'] + 500;
+                                }
+
+                                $onw['number'] = $onw['number'] + mysqli_num_rows($orders);
+                                $onw['total'] = $onw['total'] + $allorder['total'];
+                                $onw['pay_qr'] = $onw['pay_qr'] + $allorder['pay_qr'];
+                                $onw['pay_delivery'] = $onw['pay_delivery'] + $allorder['pay_delivery'];
+                            ?>
+
+                            <tr>
+                                <td><?=$staff_user_d['name']?></td>
+                                <td><?=mysqli_num_rows($orders)?></td>
+                                <td class="fr_price"><?=$allorder['total']?></td>
+                                <td class="fr_price"><?=$allorder['pay_qr']?></td>
+                                <td class="fr_price"><?=$allorder['pay_delivery']?></td>
+                                <td class="fr_price"></td>
+                                <td class="fr_price"></td>
+                                <td class="fr_price"></td>
+                            </tr>
+                        <? endwhile ?>
+                    
+                    </tbody>
+
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>Саны</td>
+                            <td>Общий</td>
+                            <td>Оплата</td>
+                            <td>Зарплата</td>
+                            <td>Каспи</td>
+                            <td>Наличный</td>
+                            <td>Расходы</td>
+                        </tr>
+                        <tr>
+                            <td>Барлыгы</td>
+                            <td><?=$onw['number']?></td>
+                            <td class="fr_price"><?=$onw['total']?></td>
+                            <td class="fr_price"><?=$onw['pay_qr']?></td>
+                            <td class="fr_price"><?=$onw['pay_delivery']?></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                </table>
+
+			</div>
+        <br><br><br>
+	</div>
+
+<? include "../block/footer.php"; ?>
