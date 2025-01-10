@@ -155,6 +155,7 @@ $(document).ready(function() {
             total: $('.btype_totol').attr('data-val'),
             delivery: $('.btype_delivery').attr('data-val'),
             qr: $('.btype_qr').attr('data-val'),
+            branch: btn.attr('data-branch'),
          }),
          success: function(data){
             if (btn.attr('data-type') == 'check') {

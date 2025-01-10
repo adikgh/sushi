@@ -7,6 +7,10 @@
 					<p>Касса: 1</p>
 					<!-- <p>Кассир: <?=$user['name']?> <?=$user['surname']?></p> -->
 					<p>Время: <span class="toDate">00:00</span></p>
+					<div class="">
+						<a class="" href="?branch=1" style="margin-right: 15px; color:#fff">Банзай</a>
+						<a class="" href="?branch=2" style="color:#fff">СушиМастер</a>
+					</div>
 				</div>
 				<div class="ahead">
 					<div class="mp_top">

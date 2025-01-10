@@ -83,6 +83,11 @@
    if (isset($_GET['lang'])) if ($_GET['lang'] == 'kz' || $_GET['lang'] == 'ru') $_SESSION['lang'] = $_GET['lang'];
    if (isset($_SESSION['lang'])) $lang = $_SESSION['lang'];
 
+   // lang
+   $branch = 1;
+   if (isset($_GET['branch'])) if ($_GET['branch'] == 1 || $_GET['branch'] == 2) $_SESSION['branch'] = $_GET['branch'];
+   if (isset($_SESSION['branch'])) $branch = $_SESSION['branch'];
+
    $view_pr = null;
    if (isset($_GET['view_pr'])) $_SESSION['view_pr'] = $_GET['view_pr'];
    if (isset($_SESSION['view_pr']) && $_SESSION['view_pr'] == 'list') $view_pr = 2; else $view_pr = null;
