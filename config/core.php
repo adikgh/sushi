@@ -95,7 +95,7 @@
 
    // date - time
    $date = date("Y-m-d", time());
-   $time = date("H:m:s", time());
+   $time = date("H:i:s", time());
    $datetime = date('Y-m-d H:i:s', time());
 
    if ($time > "00:00:00" && $time < "06:00:00") {
