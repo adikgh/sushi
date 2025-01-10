@@ -53,7 +53,7 @@
                             <? $staff_id = $staff_d['user_id']; ?>
                             <!-- <option value="" data-id="<?=$staff_d['user_id']?>" <?=($buy_d['сourier_id'] == $staff_d['user_id']?'selected':'')?>></option> -->
                             
-                            <? $orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and сourier_id  = '$staff_id' order by number desc"); ?>
+                            <? $orders = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and сourier_id  = '$staff_id' and branch_id = '$branch' order by number desc"); ?>
                             <?
                                 $allorder['total'] = 0;
                                 $allorder['pay_qr'] = 0;
