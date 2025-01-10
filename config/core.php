@@ -62,7 +62,7 @@
 
    // setting
    $site = mysqli_fetch_array(db::query("select * from `site` where id = 1"));
-   $ver = 1.019;
+   $ver = 1.021;
    $site_set = [
       'menu' => true,
       'search' => true,
@@ -97,6 +97,8 @@
    $date = date("Y-m-d", time());
    $time = date("H:m:s", time());
    $datetime = date('Y-m-d H:i:s', time());
+   $start_cdate = date('Y-m-d 06:00:00');
+	$end_cdate = date("Y-m-d 06:00:00", strtotime("$cdate2 +1 day"));
 
    // url
 	$url = $url_full = $_SERVER['REQUEST_URI'];
