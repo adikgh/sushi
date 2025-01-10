@@ -97,8 +97,15 @@
    $date = date("Y-m-d", time());
    $time = date("H:m:s", time());
    $datetime = date('Y-m-d H:i:s', time());
-   $start_cdate = date('Y-m-d 06:00:00');
-	$end_cdate = date("Y-m-d 06:00:00", strtotime("$cdate2 +1 day"));
+
+   if ($time > "00:00:00" && $time < "06:00:00") {
+      $start_cdate = date('Y-m-d 06:00:00', strtotime("$date -1 day"));
+      $end_cdate = date("Y-m-d 06:00:00", strtotime("$start_cdate +1 day"));
+   } else {
+      $start_cdate = date('Y-m-d 06:00:00');
+      $end_cdate = date("Y-m-d 06:00:00", strtotime("$start_cdate +1 day"));
+   }
+
 
    // url
 	$url = $url_full = $_SERVER['REQUEST_URI'];
