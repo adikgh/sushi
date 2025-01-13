@@ -2105,10 +2105,13 @@ input.uc_uin_calc_q:focus{border:1px solid var(--bl	)}
 .sbl2_ln{
 	position: relative;
 	width: 50%;
-	height: 100%;
+}
+.sbl2_lns{
+	position: fixed;
+	width: 50%;
+	height: 100vh;
 	background: var(--wh);
 }
-
 
 
 .sign{
@@ -2137,6 +2140,7 @@ input.uc_uin_calc_q:focus{border:1px solid var(--bl	)}
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 30px 20px;
+	padding-bottom: 30px;
 }
 
 .sbl2_lroi{
