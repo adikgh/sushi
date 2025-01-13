@@ -79,15 +79,15 @@
 		}
 
 		// user management
-		public static function user_management($id) {
-			$sql = db::query("select * from user_management where user_id = '$id'");
+		public static function user_staffw($id) {
+			$sql = db::query("select * from user_staff where user_id = '$id' limit 1");
 			if (mysqli_num_rows($sql)) return mysqli_fetch_array($sql); else return 0;
 		}
 
 
 		// user staff
 		public static function user_staff($id) {
-			$sql = db::query("select * from user_staff where id = '$id'");
+			$sql = db::query("select * from user_staff where id = '$id' limit 1");
 			if (mysqli_num_rows($sql)) return mysqli_fetch_array($sql); else return 0;
 		}
 		public static function user_staff_name($id) {

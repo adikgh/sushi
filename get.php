@@ -10,7 +10,7 @@
 			$user = db::query("SELECT * FROM user WHERE id = '$id'");
 			$user_d = mysqli_fetch_assoc($user);
 			$_SESSION['uph'] = $user_d['phone'];
-			$_SESSION['ups'] = $user_d['password2'];
+			$_SESSION['ups'] = $user_d['password'];
 			echo 'yes';
 		} else echo 'none';
 		exit();
@@ -20,14 +20,14 @@
 	// sign in phone
 	if(isset($_GET['sign'])) {
 		$user_id = strip_tags($_POST['user_id']);
-		$password = md5(strip_tags($_POST['password']));
-		$user = db::query("SELECT * FROM user WHERE id = '$user_id' and password2 = '$password' and rights = 1");
+		$code = strip_tags($_POST['code']);
+		$user = db::query("SELECT * FROM user WHERE id = '$user_id' and `code` = '$code' and `right` = 1");
 		if (mysqli_num_rows($user)) {
 			$user_d = mysqli_fetch_array($user);
-			$_SESSION['uph'] = $user_d['phone'];
-			$_SESSION['ups'] = $password;
-			setcookie('uph', $user_d['phone'], time() + 3600*24*30*6, '/');
-			setcookie('ups', $password, time() + 3600*24*30*6, '/');
+			$_SESSION['upi'] = $user_d['id'];
+			$_SESSION['upc'] = $code;
+			setcookie('upi', $user_d['id'], time() + 3600*24*30*6, '/');
+			setcookie('upc', $code, time() + 3600*24*30*6, '/');
 			echo 'yes';
 		} else echo 'none';
 		exit();

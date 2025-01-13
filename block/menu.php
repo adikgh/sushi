@@ -7,19 +7,26 @@
 					<p>Касса: 1</p>
 					<!-- <p>Кассир: <?=$user['name']?> <?=$user['surname']?></p> -->
 					<p>Время: <span class="toDate">00:00</span></p>
-					<div class="">
-						<a class="" href="?branch=1" style="margin-right: 15px; color:#fff">Банзай</a>
-						<a class="" href="?branch=2" style="color:#fff">СушиМастер</a>
-					</div>
+					<? if ($user_right['positions_id'] != 4): ?>
+						<div class="">
+							<a class="" href="?branch=1" style="margin-right: 15px; color:#fff">Банзай</a>
+							<a class="" href="?branch=2" style="color:#fff">СушиМастер</a>
+						</div>
+					<? endif ?>
 				</div>
 				<div class="ahead">
 					<div class="mp_top">
 						<div class="mp_topc">
-							<a class="mp_topi <?=($menu_name=='cashbox'?'mp_topi_act':'')?>" href="/cashbox/">Новый заказ</a>
+							<? if ($user_right['positions_id'] == 4): ?>
+								<a class="mp_topi <?=($menu_name=='cashbox'?'mp_topi_act':'')?>" href="/cashbox/">Новый заказ</a>
+								<a class="mp_topi <?=($menu_name=='orders'?'mp_topi_act':'')?>" href="/orders/">История</a>
+							<? else: ?>
+								<a class="mp_topi <?=($menu_name=='orders'?'mp_topi_act':'')?>" href="/orders/all.php">История</a>
+								<a class="mp_topi <?=($menu_name=='main'?'mp_topi_act':'')?>" href="/kassa/">Касса</a>
+								<a class="mp_topi <?=($menu_name=='products'?'mp_topi_act':'')?>" href="/products/">Товары</a>
+							<? endif ?>
+
 							<!-- <a class="mp_topi <?=($menu_name=='return'?'mp_topi_act':'')?>" href="/return/">Возврат</a> -->
-							<a class="mp_topi <?=($menu_name=='orders'?'mp_topi_act':'')?>" href="/orders/">История</a>
-							<a class="mp_topi <?=($menu_name=='main'?'mp_topi_act':'')?>" href="/kassa/">Касса</a>
-							<a class="mp_topi <?=($menu_name=='products'?'mp_topi_act':'')?>" href="/products/">Товары</a>
 							<!-- <a class="mp_topi <?=($menu_name=='main'?'mp_topi_act':'')?>" href="/change/">Смена</a> -->
 						</div>
 					</div>
@@ -31,8 +38,8 @@
 							</div>
 							<div class="ub1_lti lazy_img" data-src="/assets/uploads/users/<?=@$user['img']?>"><? if (!@$user['img']): ?><i class="fal fa-user"></i><? endif ?></div>
 						</div>
-						<!-- <div class="menu_c">
-							<a class="menu_ci" href="/products/">
+						<div class="menu_c">
+							<!-- <a class="menu_ci" href="/products/">
 								<div class="menu_cin"><i class="fal fa-boxes-alt"></i></div>
 								<div class="menu_cih">Корректировка</div>
 							</a>
@@ -43,7 +50,7 @@
 							<a class="menu_ci" href="/displacement/">
 								<div class="menu_cin"><i class="fal fa-boxes-alt"></i></div>
 								<div class="menu_cih">Перемещения</div>
-							</a>
+							</a> -->
 							<a class="menu_ci" href="/acc/">
 								<div class="menu_cin"><i class="fal fa-user"></i></div>
 								<div class="menu_cih">Аккаунт</div>
@@ -52,7 +59,7 @@
 								<div class="menu_cin"><i class="fal fa-sign-out"></i></div>
 								<div class="menu_cih">Выход</div>
 							</a>
-						</div> -->
+						</div>
 					</div>
 				</div>
 			</div>
@@ -60,7 +67,7 @@
 	</div>
 <? endif ?>
 
-<? if ($site_set['menu'] == true): ?>
+<!-- <? if ($site_set['menu'] == true): ?>
    <div class="pmenu">
       <div class="pmenu_c">
          <a class="pmenu_i <?=($menu_name=='cashbox'?'pmenu_i_act':'')?>" href="/cashbox/">
@@ -81,4 +88,4 @@
 			</a>
       </div>
    </div>
-<? endif ?>
+<? endif ?> -->

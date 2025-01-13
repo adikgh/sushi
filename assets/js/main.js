@@ -113,27 +113,7 @@ $(document).ready(function() {
 
 
 
-	// sign in
-	$('.btn_sign').on('click', function() {
-		if ($('.user_id').attr('data-sel') == 0 || $('.password').attr('data-sel') == 0) mess('Че та не то')
-		else {
-			$.ajax({
-				url: "/get.php?sign",
-				type: "POST",
-				dataType: "html",
-				data: ({ 
-					user_id: $('.user_id').attr('data-val'),
-					password: $('.password').attr('data-val'),
-				}),
-				beforeSend: function(){ },
-				error: function(data){ console.log(data) },
-				success: function(data){
-					if (data == 'yes') location.href = '/cashbox/';
-					else console.log(data)
-				},
-			})
-		}
-	});
+
 
 
 
@@ -1096,6 +1076,128 @@ $(document).ready(function() {
 	// 		}
 	// 	},
 	// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	// cashbox_pay
+	$('.loginq_clc').click(function(){
+		$('.loginq_block').addClass('pop_bl_act');
+		$('#html').addClass('ovr_h');
+		$('.btn_sign').attr('data-id', $(this).attr('data-id'))
+	})
+	$('.loginq_back').click(function(){
+		$('.loginq_block').removeClass('pop_bl_act');
+		$('#html').removeClass('ovr_h');
+	})
+
+	// sign in
+	$('.btn_sign').on('click', function() {
+		if ($('.password').attr('data-sel') == 0) mess('Жеке кодыңызды енгізіңіз')
+		else {
+			$.ajax({
+				url: "/get.php?sign",
+				type: "POST",
+				dataType: "html",
+				data: ({ 
+					user_id: $('.btn_sign').attr('data-id'),
+					code: $('.code').val(),
+				}),
+				beforeSend: function(){ },
+				error: function(data){ console.log(data) },
+				success: function(data){
+					if (data == 'yes') location.href = '/cashbox/';
+					else mess('Жеке кодыңыз қате')
+				},
+			})
+		}
+	});
+	// sign in
+	$('.code').on('input', function() {
+		if ($('.code').val().length == 4) {
+			if ($('.password').attr('data-sel') == 0) mess('Жеке кодыңызды енгізіңіз')
+			else {
+				$.ajax({
+					url: "/get.php?sign",
+					type: "POST",
+					dataType: "html",
+					data: ({ 
+						user_id: $('.btn_sign').attr('data-id'),
+						code: $('.code').val(),
+					}),
+					beforeSend: function(){ },
+					error: function(data){ console.log(data) },
+					success: function(data){
+						if (data == 'yes') location.href = '/cashbox/';
+						else mess('Жеке кодыңыз қате')
+					},
+				})
+			}
+		}
+	});
+
+
+
+
+
+	// 
+
+	// let keyCode;
+	// $('html').on('keyup', '.loginq_form input', function (e) {
+	// 	// $('html').keyup(function(e){
+	// 	// 	if(e.keyCode == 8)alert('backspace trapped')
+	// 	// })
+	// 	// console.log(e.keyCode);
+	// 	keyCode = e.keyCode
+
+	// 	nmb = Number($(this).attr('data-number'))
+	// 	if (e.keyCode == 8) {
+	// 		// console.log('Басылды');
+	// 		if (nmb == 4) {
+	// 			$('.loginq_number3').focus()
+	// 		} else if (nmb == 3) {
+	// 			$('.loginq_number2').focus()
+	// 		} else if (nmb == 2) {
+	// 			$('.loginq_number1').focus()
+	// 		} else {
+	// 			console.log('Последный');
+	// 		}
+	// 	}
+	// })
+
+	// $('html').on('input', '.loginq_form input', function (e) {
+
+	// 	console.log(keyCode);
+
+	// 	nmb = Number($(this).attr('data-number'))
+	// 	if (nmb == 1) {
+	// 		$('.loginq_number2').focus()
+	// 	} else if (nmb == 2) {
+	// 		$('.loginq_number3').focus()
+	// 	} else if (nmb == 3) {
+	// 		$('.loginq_number4').focus()
+	// 	} else {
+	// 		console.log('Последный');
+	// 	}
+	// })
+
+  
+
+
+
+
+
 
 
 

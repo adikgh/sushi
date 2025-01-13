@@ -154,6 +154,17 @@
 						<div class="cashbox_pay_btotol_c fr_price" data-val="<?=$total?>" data-on-val="<?=$total?>"><?=$total?></div>
 					</div>
 
+					<!-- <div class="form_im">
+						<div class="form_span">Тип оплаты:</div>
+						<div class="form_im_slo payment_method" data-type-name="qr">
+							<div class="form_im_slo_i form_im_slo_act" data-type="qr">Предоплата</div>
+							<div class="form_im_slo_i" data-type="cash">Наличные</div>
+							<div class="form_im_slo_i" data-type="transfer">Перевод</div>
+							<div class="form_im_slo_i" data-type="cash">Наличные</div>
+							<div class="form_im_slo_i" data-type="card">Банковская карта</div>
+							<div class="form_im_slo_i" data-type="mixed">Смешанный</div>
+						</div>
+					</div> -->
 					<div class="cashbox_pay_btype">
 						<div class="form_im btype_qr">
 							<div class="form_span">Предоплата:</div>
@@ -166,6 +177,21 @@
 							<i class="fal fa-tenge form_icon"></i>
 						</div>
 
+						<!-- <div class="form_im btype_transfer dsp_n ">
+							<div class="form_span">Перевод:</div>
+							<input type="tel" class="form_txt fr_price " placeholder="0">
+							<i class="fal fa-tenge form_icon"></i>
+						</div> -->
+						<!-- <div class="form_im btype_cash dsp_n ">
+							<div class="form_span">Наличные:</div>
+							<input type="tel" class="form_txt fr_price " placeholder="0">
+							<i class="fal fa-tenge form_icon"></i>
+						</div> -->
+						<!-- <div class="form_im btype_card dsp_n ">
+							<div class="form_span">Банковская карта:</div>
+							<input type="tel" class="form_txt fr_price " placeholder="0">
+							<i class="fal fa-tenge form_icon"></i>
+						</div> -->
 					</div>
 					
 					<div class="cashbox_pay_bsem">
@@ -173,11 +199,15 @@
 							<div class="form_span">Итог:</div>
 							<div class="cashbox_pay_bsemc cashbox_pay_bsemt fr_price"><?=$total?></div>
 						</div>
+						<!-- <div class="form_im">
+							<div class="form_span">Сдача:</div>
+							<div class="cashbox_pay_bsemc cashbox_pay_bsems fr_price">0</div>
+						</div> -->
 					</div>
 
 					<div class="form_im">
 						<div class="btn cashbox_pay2" data-id="<?=$cashbox_id?>">Продать</div>
-						<div class="btn btn_cl cashbox_pay2 pay_print" data-id="<?=$cashbox_id?>" data-type="check">Продать и распечатать чек</div>
+						<div class="btn btn_cl cashbox_pay2" data-id="<?=$cashbox_id?>" data-type="check">Продать и распечатать чек</div>
 					</div>
 				</div>
 

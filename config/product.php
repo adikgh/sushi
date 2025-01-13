@@ -170,6 +170,18 @@
 
 
 
+		public static function next_number_order($s, $e, $b) {
+			$sql = db::query("SELECT * FROM `retail_orders` where `ins_dt` BETWEEN '$s' and '$e' and `branch_id` = '$b' order by `number` desc");
+			if (mysqli_num_rows($sql)) return (mysqli_fetch_assoc($sql))['number'] + 1; else return 1;
+		}
+		
+
+
+
+
+
+
+
 		// favorites
 		public static function favorites($id, $user_id) {
 			$sql = db::query("select * from on_favorites where user_id = '$user_id' and item_id = '$id'");

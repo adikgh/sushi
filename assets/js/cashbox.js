@@ -352,7 +352,7 @@ $(document).ready(function() {
          dataType: "html",
          data: ({ 
             id: btn.data('id'),
-            number: $('.order_number_sel').attr('data-val'),
+            // number: $('.order_number_sel').attr('data-val'),
             // payment_method: $('.payment_method').attr('data-type-name'),
             total: $('.cashbox_pay_btotol_c').attr('data-val'),
             qr: $('.btype_qr input').attr('data-val'),
@@ -376,7 +376,23 @@ $(document).ready(function() {
 
 
 
-
+   // function orderPrint(id,param) {
+   //    tooltip("order_print_baloon_" + id);
+   //    if(gs_print_frame) {
+   //       $("#print_frame").attr("src","/orders/"+param+"&orderID="+id+"&noprint");
+   //       $("#print_frame").load(function(){
+   //          window.frames["print_frame"].focus();
+   //          window.frames["print_frame"].print();
+   //       });
+   //    } else {
+   //       window.open("/orders/"+param+"&orderID="+id,"mywin","width=570,height=570,left=250,top=50");
+   //    }
+   // }
+   
+	$('.pay_print').on('click', function () {
+      window.open("/orders/" + "order_print.php?" + "&orderID=" + $(this).attr('data-id'), "mywin","width=570,height=570,left=250,top=50");
+      // orderPrint($(this).attr('data-id'), 'order_print.php?')
+	})
 
 
 

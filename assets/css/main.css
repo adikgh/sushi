@@ -2094,16 +2094,30 @@ input.uc_uin_calc_q:focus{border:1px solid var(--bl	)}
 .sbl2{
 	position: relative;
 	width: 100%;
+	height: 100vh;
+	/* min-height: 680px; */
+
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
 }
+
+.sbl2_ln{
+	position: relative;
+	width: 50%;
+	height: 100%;
+	background: var(--wh);
+}
+
+
 
 .sign{
 	position: relative;
-	width: 100%;
-	min-height: 680px;
-	height: 100vh;
+	width: 50%;
+	/* height: 100%;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: center; */
 }
 .usign_c{
 	position: relative;
@@ -2114,6 +2128,45 @@ input.uc_uin_calc_q:focus{border:1px solid var(--bl	)}
 @media (max-width: 500px) {
 	.usign_c{}
 }
+
+
+
+.sbl2_lro{
+	position: relative;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 30px 20px;
+}
+
+.sbl2_lroi{
+	position: relative;
+	width: 100%;
+	/* min-height: 120px; */
+	cursor: pointer;
+
+	border: 1px solid var(--wh);
+	/* padding: 20px; */
+}
+.sbl2_lroi div{
+	width: 100%;
+	padding-bottom: 70%;
+	background: var(--wh);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+}
+.sbl2_lroi p{
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+	padding: 10px 10px 10px 10px;
+}
+
+
+
+
+
 
 .usign_img{
 	position: relative;
@@ -2137,7 +2190,7 @@ input.uc_uin_calc_q:focus{border:1px solid var(--bl	)}
 .usign_head{
 	position: relative;
 	width: 100%;
-	margin-top: 30px;
+	margin-top: 40px;
 	text-align: center;
 }
 .usign_h{}
@@ -2175,7 +2228,7 @@ input.uc_uin_calc_q:focus{border:1px solid var(--bl	)}
 .usign_cn{
 	position: relative;
 	width: 100%;
-	margin-top: 30px;
+	margin-top: 50px;
 }
 .si_blc_b{
 	position: relative;
@@ -2184,9 +2237,32 @@ input.uc_uin_calc_q:focus{border:1px solid var(--bl	)}
 }
 
 
+.loginq_form{
+	/* display: grid; */
+	/* grid-template-columns: repeat(4, 1fr); */
+	/* grid-gap: 15px; */
+	
+	position: relative;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.loginq_form input{
+	padding: 0;
+	text-align: center;
 
+	width: 74px;
+	height: 74px;
+	max-height: none;
+	margin-right: 15px;
 
-
+	font-size: 20px;
+	font-weight: 700;
+}
+.loginq_form input:last-child{
+	margin-right: 0;
+}
 
 
 
