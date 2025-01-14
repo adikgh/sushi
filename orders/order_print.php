@@ -45,6 +45,20 @@
             <td colspan="3"></td>
         </tr>
         <tr class="tr_border">
+            <td><b>Клиент</b></td>
+        </tr>
+
+        <tr class="tr">
+            <td align="left" сolspan="3">Номер: <?=$cashbox_d['phone']?></td>
+        </tr>
+        <tr class="tr">
+            <td align="left" сolspan="3">Адрес: <?=$cashbox_d['address']?></td>
+        </tr>
+
+        <tr class="tr">
+            <td colspan="3"></td>
+        </tr>
+        <tr class="tr_border">
             <td><b>Наименование</b></td>
             <td width="40" align="center"><b>Кол.</b></td>
             <td width="50" align="right"><b>Сумма</b></td>
@@ -87,9 +101,9 @@
 </table>
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     window.onload = function() {
 	    window.print();
     }
-</script>
+</script> -->
 
