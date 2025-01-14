@@ -60,7 +60,7 @@
 
    // setting
    $site = mysqli_fetch_array(db::query("select * from `site` where id = 1"));
-   $ver = 1.028;
+   $ver = 1.029;
    $site_set = [
       'menu' => true,
       'search' => true,
