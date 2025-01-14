@@ -104,7 +104,7 @@
       exit();
 	}
 
-   // cashbox_plus
+   // cashbox_minus
 	if(isset($_GET['cashbox_minus'])) {
 		$id = strip_tags($_POST['id']);
       $upd1 = db::query("UPDATE `retail_orders_products` SET `quantity` = `quantity` - 1 WHERE id = '$id';");
