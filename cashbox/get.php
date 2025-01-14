@@ -120,15 +120,15 @@
 		$qr = strip_tags($_POST['qr']);
 		$cash = strip_tags($_POST['cash']);
 		$delivery = strip_tags($_POST['delivery']);
-		$phone = strip_tags($_POST['phone']);
-		$address = strip_tags($_POST['address']);
+		$phone = @strip_tags($_POST['phone']);
+		$address = @strip_tags($_POST['address']);
       
 		$cashbox_number = product::next_number_order($start_cdate, $end_cdate, $branch);
 
       if ($delivery) {
          $upd = db::query("UPDATE `retail_orders` SET `number` = '$cashbox_number', `paid` = 1, `total` = '$total', `pay_qr` = '$qr', `pay_cash` = '$cash',`pay_delivery` = '$delivery', `branch_id` = '$branch', `upd_dt` = '$datetime' WHERE `id`='$id'");
-         $upd = db::query("UPDATE `retail_orders` SET `phone` = '$phone', `upd_dt` = '$datetime' WHERE `id`='$id'");
-         $upd = db::query("UPDATE `retail_orders` SET `address` = '$address', `upd_dt` = '$datetime' WHERE `id`='$id'");
+         if ($phone) $upd = db::query("UPDATE `retail_orders` SET `phone` = '$phone', `upd_dt` = '$datetime' WHERE `id`='$id'");
+         if ($address) $upd = db::query("UPDATE `retail_orders` SET `address` = '$address', `upd_dt` = '$datetime' WHERE `id`='$id'");
       } else $upd = db::query("UPDATE `retail_orders` SET `number` = '$cashbox_number', `paid` = 1, `total` = '$total', `pay_qr` = '$qr', `pay_cash` = '$cash', `order_status` = 2, `branch_id` = '$branch', `upd_dt` = '$datetime' WHERE `id`='$id'");
       $ins = db::query("INSERT INTO `retail_orders`(`user_id`) VALUES ('$user_id')");
       if ($upd && $ins) echo 'yes';
