@@ -58,12 +58,11 @@
 				<div class="cash_bl1_l">
 					<div class="uc_uh">
 						<div class="uc_uh2">
-							<div class="uc_uiln">Наименование</div>
+							<div class="uc_uiln"Наименование>Атауы</div>
 							<div class="uc_uil">
 								<div class="uc_uilf1">
 									<div class="uc_uilf1c">
-										<div class="uc_uh_other">Цена</div>
-										<div class="uc_uh_other">Количество</div>
+										<div class="uc_uh_other"Количество>Бағасы (цена) x cаны</div>
 									</div>
 								</div>
 								<div class="uc_uilf2"></div>
@@ -120,7 +119,7 @@
 										</div>
 									<? endwhile ?>
 								<? else: ?> 
-									<div class="ds_nr"><p>Пустой список</p></div>
+									<div class="ds_nr" Пустой список><p>Бос тізім</p></div>
 								<? endif ?>
 							</div>
 						</div>
@@ -129,11 +128,11 @@
 
 				<div class="cash_bl1_rb <?=($total==0?'dsp_n':'')?>">
 					<div class="cash_bl1_rbl">
-						<div class="cash_bl1_rblin">Итого:</div>
+						<div class="cash_bl1_rblin">Қорытынды:</div>
 						<div class="cash_bl1_rblip cashbox_total fr_price" data-total="<?=$total?>"><?=$total?></div>
 					</div>
 					<div class="cash_bl1_rbr">
-						<div class="btn cashbox_pay" data-id="<?=$cashbox_id?>">Оплата</div>
+						<div class="btn cashbox_pay" data-id="<?=$cashbox_id?>">Сақтау</div>
 					</div>
 				</div>
 
@@ -150,7 +149,7 @@
 		<div class="pop_bl_a cashbox_pay_back"></div>
 		<div class="pop_bl_c">
 			<div class="head_c">
-				<h4>Оплата</h4>
+				<h4>Сақтау</h4>
 				<div class="btn btn_dd cashbox_pay_back"><i class="fal fa-times"></i></div>
 			</div>
 			<div class="pop_bl_cl">
@@ -158,7 +157,7 @@
 
 					<div class="">
 						<div class="form_im ">
-							<div class="form_span">Номер:</div>
+							<div class="form_span">Нөмір:</div>
 							<input type="tel" class="form_txt fr_phone btype_phone" placeholder="8 (700) 000-00-00" data-val="0">
 							<i class="fal fa-phone-alt form_icon"></i>
 						</div>
@@ -168,7 +167,7 @@
 					
 					<div class="">
 						<div class="form_im ">
-							<div class="form_span">Адрес:</div>
+							<div class="form_span">Мекен-жай (адрес):</div>
 							<input type="text" class="form_txt btype_address" placeholder="" data-val="0">
 							<i class="fal fa-text form_icon"></i>
 						</div>
@@ -178,7 +177,7 @@
 
 					<div class="">
 						<div class="form_im ">
-							<div class="form_span">Егер предзаказ:</div>
+							<div class="form_span">Алдын-ала тапсырыс (предзаказ):</div>
 							<input type="text" class="form_txt btype_preorder" placeholder="" data-val="0">
 							<i class="fal fa-clock form_icon"></i>
 						</div>
@@ -188,7 +187,7 @@
 
 					<div class="">
 						<div class="form_im ">
-							<div class="form_span">Доставка:</div>
+							<div class="form_span">Жеткізу (доставка):</div>
 							<input type="tel" class="form_txt fr_price btype_delivery" placeholder="0" data-val="0">
 							<i class="fal fa-tenge form_icon"></i>
 						</div>
@@ -197,13 +196,13 @@
 					<br><br>
 					
 					<div class="cashbox_pay_btotol">
-						<div class="form_span">Общая сумма:</div>
+						<div class="form_span">Жалпы ақшасы:</div>
 						<div class="cashbox_pay_btotol_c fr_price" data-val="<?=$total?>" data-on-val="<?=$total?>"><?=$total?></div>
 					</div>
 
 					<div class="cashbox_pay_btype">
 						<div class="form_im">
-							<div class="form_span">Предоплата:</div>
+							<div class="form_span">Алдын ала төлем (предоплата):</div>
 							<input type="tel" class="form_txt fr_price btype_qr" placeholder="0" value="<?=$total?>" data-val="<?=$total?>">
 							<i class="fal fa-tenge form_icon"></i>
 						</div>
@@ -222,7 +221,7 @@
 
 					<div class="form_im">
 						<!-- <div class="btn cashbox_pay2" data-id="<?=$cashbox_id?>">Продать</div> -->
-						<div class="btn btn_cl cashbox_pay2 pay_print" data-id="<?=$cashbox_id?>" data-type="check">Продать и распечатать чек</div>
+						<div class="btn btn_cl cashbox_pay2 pay_print" data-id="<?=$cashbox_id?>" data-type="check" Продать и распечатать чек>Сату және чек шығару</div>
 					</div>
 				</div>
 

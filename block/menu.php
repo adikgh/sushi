@@ -17,13 +17,13 @@
 				<div class="ahead">
 					<div class="mp_top">
 						<div class="mp_topc">
-							<a class="mp_topi <?=($menu_name=='cashbox'?'mp_topi_act':'')?>" href="/cashbox/">Новый заказ</a>
+							<a class="mp_topi <?=($menu_name=='cashbox'?'mp_topi_act':'')?>" href="/cashbox/">Жаңадан косу</a>
 							<? if ($user_right['positions_id'] == 4): ?>
-								<a class="mp_topi <?=($menu_name=='orders'?'mp_topi_act':'')?>" href="/orders/">История</a>
+								<a class="mp_topi <?=($menu_name=='orders'?'mp_topi_act':'')?>" href="/orders/">Тапсырыстар</a>
 							<? else: ?>
-								<a class="mp_topi <?=($menu_name=='orders'?'mp_topi_act':'')?>" href="/orders/all.php">История</a>
+								<a class="mp_topi <?=($menu_name=='orders'?'mp_topi_act':'')?>" href="/orders/all.php">Тапсырыстар</a>
 								<a class="mp_topi <?=($menu_name=='main'?'mp_topi_act':'')?>" href="/kassa/">Касса</a>
-								<a class="mp_topi <?=($menu_name=='products'?'mp_topi_act':'')?>" href="/products/">Товары</a>
+								<a class="mp_topi <?=($menu_name=='products'?'mp_topi_act':'')?>" href="/products/">Тауар</a>
 							<? endif ?>
 
 							<!-- <a class="mp_topi <?=($menu_name=='return'?'mp_topi_act':'')?>" href="/return/">Возврат</a> -->
@@ -51,7 +51,7 @@
 								<div class="menu_cin"><i class="fal fa-boxes-alt"></i></div>
 								<div class="menu_cih">Перемещения</div>
 							</a> -->
-							<a class="menu_ci" href="/acc/">
+							<a class="menu_ci" href="#/acc/">
 								<div class="menu_cin"><i class="fal fa-user"></i></div>
 								<div class="menu_cih">Аккаунт</div>
 							</a>

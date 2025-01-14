@@ -1476,7 +1476,7 @@ a.uc_ui{cursor:pointer}
 	justify-content: flex-end;
 	text-align: right;
 }
-.uc_uilf1c .uc_uin_other{
+.uc_uilf1c .uc_uin_other, .uc_uilf1c .uc_uh_other{
 	display: inline;
 	width: auto;
 	font-size: 16px;

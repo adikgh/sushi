@@ -302,9 +302,11 @@ $(document).ready(function() {
       sum = Number($('.cashbox_pay_btotol_c').attr('data-on-val'))
       $('.cashbox_pay_btotol_c').attr('data-val', delivery + sum)
       $('.cashbox_pay_btotol_c').html((delivery + sum) + ' тг')
-      $('.btype_qr input').val(delivery + sum)
-      $('.btype_qr input').attr('data-val', delivery + sum)
+      $('.btype_qr').val(delivery + sum + ' тг')
+      $('.btype_qr').attr('data-val', delivery + sum)
       $('.cashbox_pay_bsemt').html((delivery + sum) + ' тг')
+      $('.btype_cash').html(delivery + sum + ' тг')
+      $('.btype_cash').attr('data-val', delivery + sum)
    })
 
 
