@@ -74,6 +74,11 @@
             </tr>
         <? endwhile ?>
             <tr class="tr" valign="top">
+                <td align="left">Доставка</td>
+                <td align="center"></td>
+                <td align="right"><?=$cashbox_d['pay_delivery']?></td>
+            </tr>
+            <tr class="tr" valign="top">
                 <td align="left">Предоплата</td>
                 <td align="center"></td>
                 <td align="right">- <?=$cashbox_d['pay_qr']?></td>
