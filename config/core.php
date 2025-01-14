@@ -60,7 +60,7 @@
 
    // setting
    $site = mysqli_fetch_array(db::query("select * from `site` where id = 1"));
-   $ver = 1.0302;
+   $ver = 1.0304;
    $site_set = [
       'menu' => true,
       'search' => true,
@@ -82,9 +82,11 @@
    if (isset($_SESSION['lang'])) $lang = $_SESSION['lang'];
 
    // lang
-   $branch = 1;
-   if (isset($_GET['branch'])) if ($_GET['branch'] == 1 || $_GET['branch'] == 2) $_SESSION['branch'] = $_GET['branch'];
-   if (isset($_SESSION['branch'])) $branch = $_SESSION['branch'];
+   $branch = 1; if (@$user_right['branch_id']) $branch = $user_right['branch_id'];
+   if (@$user_right['positions_id'] != 4) {
+      if (isset($_GET['branch'])) if ($_GET['branch'] == 1 || $_GET['branch'] == 2) $_SESSION['branch'] = $_GET['branch'];
+      if (isset($_SESSION['branch'])) $branch = $_SESSION['branch'];
+   }
 
    $view_pr = null;
    if (isset($_GET['view_pr'])) $_SESSION['view_pr'] = $_GET['view_pr'];
