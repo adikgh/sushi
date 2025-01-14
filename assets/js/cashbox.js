@@ -401,6 +401,7 @@ $(document).ready(function() {
 	$('.pay_print').on('click', function () {
       window.open("/orders/" + "order_print.php?" + "&orderID=" + $(this).attr('data-id'), "mywin","width=570,height=570,left=250,top=50");
       // orderPrint($(this).attr('data-id'), 'order_print.php?')
+      location.reload();
 	})
 
 
