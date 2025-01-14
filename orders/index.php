@@ -100,6 +100,8 @@
 							<div class="uc_ui">
 								<div class="uc_uil2" href="list.php?id=<?=$buy_d['id'].($type=='return'?'&type=return':'')?>">
 									<div class="uc_ui_number"><?=$buy_d['number']?></div>
+									<div class="uc_uin_other"><?=$buy_d['phone']?></div>
+									<div class="uc_uin_other"><?=$buy_d['address']?></div>
 									<div class="uc_uin_other">
 										<select name="" id="" class="on_status" data-order-id="<?=$buy_d['id']?>" >
 											<? $orders_status = db::query("select * from retail_orders_status"); ?>
@@ -121,11 +123,6 @@
 									<div class="uc_uin_other fr_price"><?=$buy_d['total']?></div>
 									<div class="uc_uin_other fr_price"><?=$buy_d['pay_qr']?> </div>
 									<div class="uc_uin_other fr_price"><?=$buy_d['total'] - $buy_d['pay_qr']?></div>
-									<div class="uc_uin_other fr_price"><?=($buy_d['pay_delivery']?$buy_d['pay_delivery'] + 500:0)?></div>
-									<div class="uc_uin_other fr_price"><?=($buy_d['pay_delivery']?$buy_d['total'] - $buy_d['pay_delivery'] - 500:$buy_d['total'] - $buy_d['pay_delivery'])?></div>
-									<div class="uc_uib">
-										<div class="uc_uibo on_delete" data-id="<?=$buy_d['id']?>"><i class="fal fa-trash-alt"></i></div>
-									</div>
 								</div>
 
 							</div>
@@ -146,6 +143,8 @@
 					<div class="uc_ui " style="background-color: #f5f5f5;">
 						<div class="uc_uil2">
 							<div class="uc_ui_number">0</div>
+							<div class="uc_uin_other"></div>
+							<div class="uc_uin_other"></div>
 							<div class="uc_uin_other">
 								<select name="status" class="on_sort_status" data-order-id="<?=$buy_d['id']?>" >
 									<option data-id="" value="">Барлығы</option>
@@ -169,9 +168,6 @@
 							<div class="uc_uin_other fr_price"><?=$allorder['total']?></div>
 							<div class="uc_uin_other fr_price"><?=$allorder['pay_qr']?> </div>
 							<div class="uc_uin_other fr_price"><?=$allorder['total'] - $allorder['pay_qr']?></div>
-							<div class="uc_uin_other fr_price"><?=$allorder['pay_delivery']?></div>
-							<div class="uc_uin_other fr_price"><?=$allorder['total'] - $allorder['pay_delivery']?></div>
-							<div class="uc_uib"></div>
 						</div>
 					</div>
 				</div>
@@ -179,13 +175,13 @@
 				<div class="uc_uh">
 					<div class="uc_uh2">
 						<div class="uc_uh_number">#</div>
+						<div class="uc_uh_other">Номер</div>
+						<div class="uc_uh_other">Адрес</div>
 						<div class="uc_uh_other">Статус</div>
 						<div class="uc_uh_other">Курьер</div>
 						<div class="uc_uh_other">Общий сумма</div>
 						<div class="uc_uh_other">Предоплата (QR)</div>
-						<div class="uc_uh_other">Қалғаны</div>
-						<div class="uc_uh_other">ЗП Курьер (Доставка)</div>
-						<div class="uc_uh_other">Остаток</div>
+						<div class="uc_uh_other">Наличный</div>
 						<div class="uc_uh_cn"></div>
 					</div>
 				</div>

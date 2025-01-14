@@ -27,7 +27,7 @@ $(document).ready(function() {
 
 
 	// mask form
-	$('.fr_phone').mask('8 (000) 000-00-00');
+	$('.fr_phone').mask('8 (700) 000-00-00');
 	$('.fr_phone2').mask('0 (000) 000-00-00');
 	$('.fr_code').mask('0000');
 	$('.fr_code1').mask('0');

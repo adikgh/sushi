@@ -199,47 +199,6 @@ $(document).ready(function() {
 	})
 
 
-	// cashbox_qn
-	$('html').on('input', '.cashbox_qn', function () {
-		btn = $(this)
-      qn = btn.attr('data-val')
-      qn_max = btn.parent('.uc_uin_other').data('max')
-      if (qn_max < qn) {
-         mess('Вы можете ввести не более ' + qn_max + ' шт.');
-         qn = qn_max; btn.attr('data-val', qn_max); btn.val(qn_max + ' шт');
-      }
-
-      $.ajax({
-         url: "/cashbox/get.php?cashbox_qn",
-         type: "POST",
-         dataType: "html",
-         data: ({ 
-            id: btn.parents('.uc_ui').data('id'),
-            item_id: btn.parents('.uc_ui').data('item-id'),
-            qn: qn,
-         }),
-         success: function(data){ 
-            if (data == 'yes') {
-               sum = qn * btn.parents('.uc_ui').attr('data-pr')
-               btn.parent().siblings('.cashbox_sum').html(sum + ' тг')
-
-               total = $('.cashbox_total').attr('data-total') - btn.parents('.uc_ui').attr('data-sum') + sum
-               $('.cashbox_total').html(total + ' тг')
-   
-               btn.parents('.uc_ui').attr('data-qn', qn)
-               btn.parents('.uc_ui').attr('data-sum', sum)
-               $('.cashbox_total').attr('data-total', total)
-               $('.cash_bl1_rb').removeClass('dsp_n')
-            }
-            if (data == 0) mess('Товар уже не осталось');
-            else console.log(data);
-            // if (data == 'yes') location.reload();
-         },
-         beforeSend: function(){ },
-         error: function(data){ }
-      })
-
-	})
 
 
 
@@ -402,8 +361,8 @@ $(document).ready(function() {
          dataType: "html",
          data: ({ 
             id: btn.data('id'),
-            // number: $('.order_number_sel').attr('data-val'),
-            // payment_method: $('.payment_method').attr('data-type-name'),
+            phone: $('.btype_phone').attr('data-val'),
+            address: $('.btype_address').attr('data-val'),
             total: $('.cashbox_pay_btotol_c').attr('data-val'),
             qr: $('.btype_qr input').attr('data-val'),
             cash: $('.btype_transfer input').attr('data-val'),
