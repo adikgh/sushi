@@ -10,8 +10,8 @@
 
 	// if (@$_GET['status']) {
 	// 	$status = $_GET['status'];
-	// 	$orders_all = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and order_status = '$status' and user_id = '$user_id'");
-	// } else $orders_all = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and user_id = '$user_id'");
+	// 	$orders_all = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and order_status = '$status' ");
+	// } else $orders_all = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' ");
 	// $page_result = mysqli_num_rows($orders_all);
 	// $orders = '';
 
@@ -19,18 +19,18 @@
 
 	// filter user all
 	// if ($type != 'return') {
-	// 	if ($_GET['on'] == 1) $orders_all = db::query("select * from retail_orders where paid = 1 and user_id = '$user_id'");
-	// 	elseif ($_GET['off'] == 1) $orders_all = db::query("select * from retail_orders where paid = 1 and user_id = '$user_id'");
+	// 	if ($_GET['on'] == 1) $orders_all = db::query("select * from retail_orders where paid = 1 ");
+	// 	elseif ($_GET['off'] == 1) $orders_all = db::query("select * from retail_orders where paid = 1 ");
 	// 	else 
 
 	// } else {
-	// 	if ($_GET['on'] == 1) $orders_all = db::query("select * from retail_returns where returns = 1 and user_id = '$user_id'");
-	// 	elseif ($_GET['off'] == 1) $orders_all = db::query("select * from retail_returns where returns = 1 and user_id = '$user_id'");
-	// 	else $orders_all = db::query("select * from retail_returns where returns = 1 and user_id = '$user_id'");
+	// 	if ($_GET['on'] == 1) $orders_all = db::query("select * from retail_returns where returns = 1 ");
+	// 	elseif ($_GET['off'] == 1) $orders_all = db::query("select * from retail_returns where returns = 1 ");
+	// 	else $orders_all = db::query("select * from retail_returns where returns = 1 ");
 	// 	$page_result = mysqli_num_rows($orders_all);
 	// }
 
-	// $orders_all = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' and user_id = '$user_id'");
+	// $orders_all = db::query("select * from retail_orders where ins_dt LIKE '%$currentdate%' ");
 	// $page_result = mysqli_num_rows($orders_all);
 	// $orders = '';
 
@@ -45,13 +45,13 @@
 
 		// filter cours
 		// if ($type != 'return') {
-		// 	if ($_GET['on'] == 1) $orders = db::query("select * from retail_orders where paid = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
-		// 	elseif ($_GET['off'] == 1) $orders = db::query("select * from retail_orders where paid = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
+		// 	if ($_GET['on'] == 1) $orders = db::query("select * from retail_orders where paid = 1  order by ins_dt desc limit $page_start, $page_age");
+		// 	elseif ($_GET['off'] == 1) $orders = db::query("select * from retail_orders where paid = 1  order by ins_dt desc limit $page_start, $page_age");
 		// 	else 
 		// } else {
-		// 	if ($_GET['on'] == 1) $orders = db::query("select * from retail_returns where returns = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
-		// 	elseif ($_GET['off'] == 1) $orders = db::query("select * from retail_returns where returns = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
-		// 	else $orders = db::query("select * from retail_returns where returns = 1 and user_id = '$user_id' order by ins_dt desc limit $page_start, $page_age");
+		// 	if ($_GET['on'] == 1) $orders = db::query("select * from retail_returns where returns = 1  order by ins_dt desc limit $page_start, $page_age");
+		// 	elseif ($_GET['off'] == 1) $orders = db::query("select * from retail_returns where returns = 1  order by ins_dt desc limit $page_start, $page_age");
+		// 	else $orders = db::query("select * from retail_returns where returns = 1  order by ins_dt desc limit $page_start, $page_age");
 		// }
 
 		// }
@@ -61,16 +61,16 @@
 	if (@$_GET['status'] && @$_GET['staff']) {
 		$status = $_GET['status'];
 		$staff = $_GET['staff'];
-		if ($staff == 'off') $orders = db::query("select * from retail_orders where ins_dt BETWEEN '$start_cdate' and '$end_cdate' and order_status = '$status' and сourier_id is null and user_id = '$user_id' and branch_id = '$branch' order by number desc");
-		else $orders = db::query("select * from retail_orders where ins_dt BETWEEN '$start_cdate' and '$end_cdate' and order_status = '$status' and сourier_id  = '$staff' and user_id = '$user_id' and branch_id = '$branch' order by number desc");
+		if ($staff == 'off') $orders = db::query("select * from retail_orders where ins_dt BETWEEN '$start_cdate' and '$end_cdate' and order_status = '$status' and сourier_id is null  and branch_id = '$branch' order by number desc");
+		else $orders = db::query("select * from retail_orders where ins_dt BETWEEN '$start_cdate' and '$end_cdate' and order_status = '$status' and сourier_id  = '$staff'  and branch_id = '$branch' order by number desc");
 	} elseif (@$_GET['status']) {
 		$status = $_GET['status'];
-		$orders = db::query("select * from retail_orders where ins_dt BETWEEN '$start_cdate' and '$end_cdate' and order_status = '$status' and user_id = '$user_id' and branch_id = '$branch' order by number desc");
+		$orders = db::query("select * from retail_orders where ins_dt BETWEEN '$start_cdate' and '$end_cdate' and order_status = '$status'  and branch_id = '$branch' order by number desc");
 	} elseif (@$_GET['staff']) {
 		$staff = $_GET['staff'];
-		if ($staff == 'off') $orders = db::query("select * from retail_orders where ins_dt BETWEEN '$start_cdate' and '$end_cdate' and сourier_id is null and user_id = '$user_id' and branch_id = '$branch' order by number desc");
-		else $orders = db::query("select * from retail_orders where ins_dt BETWEEN '$start_cdate' and '$end_cdate' and сourier_id  = '$staff' and user_id = '$user_id' and branch_id = '$branch' order by number desc");
-	} else $orders = db::query("select * from retail_orders where ins_dt BETWEEN '$start_cdate' and '$end_cdate' and user_id = '$user_id' and branch_id = '$branch' order by number desc");
+		if ($staff == 'off') $orders = db::query("select * from retail_orders where ins_dt BETWEEN '$start_cdate' and '$end_cdate' and сourier_id is null  and branch_id = '$branch' order by number desc");
+		else $orders = db::query("select * from retail_orders where ins_dt BETWEEN '$start_cdate' and '$end_cdate' and сourier_id  = '$staff'  and branch_id = '$branch' order by number desc");
+	} else $orders = db::query("select * from retail_orders where ins_dt BETWEEN '$start_cdate' and '$end_cdate'  and branch_id = '$branch' order by number desc");
 
 
 	$allorder['total'] = 0;

@@ -2,7 +2,10 @@
 <? include "../config/core.php"; ?>
 
 <? if (isset($_GET['catalog'])): ?>
-    <? $catalog_id = @strip_tags($_POST['catalog_id']); ?>
+    <? 
+        $catalog_id = @strip_tags($_POST['catalog_id']); 
+        $_SESSION['catalog_id'] = $catalog_id;
+    ?>
     <? $cashbox_id = @strip_tags($_POST['cashbox_id']); ?>
 
     <? $product = db::query("select * from product where catalog_id = '$catalog_id'"); ?>

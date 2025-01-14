@@ -344,6 +344,7 @@ $(document).ready(function() {
             id: btn.data('id'),
             phone: $('.btype_phone').val(),
             address: $('.btype_address').attr('data-val'),
+            add: $('.btype_add').attr('data-val'),
             preorder: $('.btype_preorder').attr('data-val'),
             total: $('.cashbox_pay_btotol_c').attr('data-val'),
             qr: $('.btype_qr').attr('data-val'),

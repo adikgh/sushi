@@ -17,6 +17,10 @@
 	$number = 0; $total = 0;
 
 
+	// 
+	$catalog_id = 1; if (@$_SESSION['catalog_id']) $catalog_id = $_SESSION['catalog_id'];
+
+
 	// site setting
 	$menu_name = 'cashbox';
 	$site_set['swiper'] = true;
@@ -40,7 +44,6 @@
 				</div>
 				<div class="">
 					<div class="hup_rcb">
-						<? $catalog_id = 1; ?>
 						<? // $product = db::query("select * from product where catalog_id = '$catalog_id' order by number asc"); ?>
 						<? $product = db::query("select * from product where catalog_id = '$catalog_id'"); ?>
 						<? while ($product_d = mysqli_fetch_assoc($product)): ?>
@@ -169,6 +172,16 @@
 						<div class="form_im ">
 							<div class="form_span">Мекен-жай (адрес):</div>
 							<input type="text" class="form_txt btype_address" placeholder="" data-val="0">
+							<i class="fal fa-text form_icon"></i>
+						</div>
+					</div>
+
+					<br>
+
+					<div class="">
+						<div class="form_im ">
+							<div class="form_span">Қосымша қажет болса:</div>
+							<input type="text" class="form_txt btype_add" placeholder="Мысалы: Замена пицца или суши" data-val="0">
 							<i class="fal fa-text form_icon"></i>
 						</div>
 					</div>
