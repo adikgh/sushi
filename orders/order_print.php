@@ -73,6 +73,11 @@
                 <td align="right"><?=($sel_d['quantity'] * $sel_d['price'])?></td>
             </tr>
         <? endwhile ?>
+            <tr class="tr" valign="top">
+                <td align="left">Предоплата</td>
+                <td align="center"></td>
+                <td align="right">- <?=$cashbox_d['pay_qr']?></td>
+            </tr>
 
         <tr class="tr_sep">
             <td colspan="3"></td>
@@ -83,7 +88,7 @@
         <tr class="tr">
             <td align="left"><b>К ОПЛАТЕ</b></td>
             <td></td>
-            <td align="right"><b><?=$cashbox_d['total']?></b></td>
+            <td align="right"><b><?=$cashbox_d['total'] - $cashbox_d['pay_qr']?></b></td>
         </tr>
         <tr class="tr">
             <td align="left" сolspan="3">Способ оплаты: Наличный</td>
