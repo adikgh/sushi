@@ -202,24 +202,22 @@
 					</div>
 
 					<div class="cashbox_pay_btype">
-						<div class="form_im btype_qr">
+						<div class="form_im">
 							<div class="form_span">Предоплата:</div>
-							<input type="tel" class="form_txt fr_price " placeholder="0" value="<?=$total?>" data-val="<?=$total?>">
+							<input type="tel" class="form_txt fr_price btype_qr" placeholder="0" value="<?=$total?>" data-val="<?=$total?>">
 							<i class="fal fa-tenge form_icon"></i>
 						</div>
-						<div class="form_im btype_transfer ">
-							<div class="form_span">Наличные:</div>
-							<input type="tel" class="form_txt fr_price " placeholder="0" data-val="0">
-							<i class="fal fa-tenge form_icon"></i>
-						</div>
-
 					</div>
 					
 					<div class="cashbox_pay_bsem">
 						<div class="form_im">
-							<div class="form_span">Итог:</div>
-							<div class="cashbox_pay_bsemc cashbox_pay_bsemt fr_price"><?=$total?></div>
+							<div class="form_span" Наличный>Қолма-қол:</div>
+							<div class="cashbox_pay_bsemc btype_cash fr_price">0</div>
 						</div>
+						<!-- <div class="form_im">
+							<div class="form_span" Итог>Қорытынды:</div>
+							<div class="cashbox_pay_bsemc cashbox_pay_bsemt fr_price"><?=$total?></div>
+						</div> -->
 					</div>
 
 					<div class="form_im">

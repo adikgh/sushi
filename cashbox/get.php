@@ -126,15 +126,18 @@
       
 		$cashbox_number = product::next_number_order($start_cdate, $end_cdate, $branch);
 
-      $upd = db::query("UPDATE `retail_orders` SET `number` = '$cashbox_number', `paid` = 1, `total` = '$total', `pay_cash` = '$cash', `branch_id` = '$branch', `upd_dt` = '$datetime' WHERE `id`='$id'");
-         if ($qr) $upd = db::query("UPDATE `retail_orders` SET `pay_qr` = '$qr', `upd_dt` = '$datetime' WHERE `id`='$id'");
-         if ($delivery) $upd = db::query("UPDATE `retail_orders` SET `pay_delivery` = '$delivery', `upd_dt` = '$datetime' WHERE `id`='$id'");
-         else $upd = db::query("UPDATE `retail_orders` SET `order_status` = 2, `upd_dt` = '$datetime' WHERE `id`='$id'");
-         if ($phone) $upd = db::query("UPDATE `retail_orders` SET `phone` = '$phone', `upd_dt` = '$datetime' WHERE `id`='$id'");
-         if ($address) $upd = db::query("UPDATE `retail_orders` SET `address` = '$address', `upd_dt` = '$datetime' WHERE `id`='$id'");
-         if ($preorder) $upd = db::query("UPDATE `retail_orders` SET `preorder_dt` = '$preorder', `upd_dt` = '$datetime' WHERE `id`='$id'");
+      $upd = db::query("UPDATE `retail_orders` SET `number` = '$cashbox_number', `paid` = 1, `total` = '$total', `branch_id` = '$branch', `upd_dt` = '$datetime' WHERE `id`='$id'");
+      if ($qr) $upd = db::query("UPDATE `retail_orders` SET `pay_qr` = '$qr', `upd_dt` = '$datetime' WHERE `id`='$id'");
+      if ($delivery) $upd = db::query("UPDATE `retail_orders` SET `pay_delivery` = '$delivery', `upd_dt` = '$datetime' WHERE `id`='$id'");
+      else $upd = db::query("UPDATE `retail_orders` SET `order_status` = 2, `upd_dt` = '$datetime' WHERE `id`='$id'");
+      if ($phone) $upd = db::query("UPDATE `retail_orders` SET `phone` = '$phone', `upd_dt` = '$datetime' WHERE `id`='$id'");
+      if ($address) $upd = db::query("UPDATE `retail_orders` SET `address` = '$address', `upd_dt` = '$datetime' WHERE `id`='$id'");
+      if ($preorder) $upd = db::query("UPDATE `retail_orders` SET `preorder_dt` = '$preorder', `upd_dt` = '$datetime' WHERE `id`='$id'");
+      if ($cash) $upd = db::query("UPDATE `retail_orders` SET `pay_cash` = '$cash', `upd_dt` = '$datetime' WHERE `id`='$id'");
       // } else $upd = db::query("UPDATE `retail_orders` SET `number` = '$cashbox_number', `paid` = 1, `total` = '$total', `pay_qr` = '$qr', `pay_cash` = '$cash', `order_status` = 2, `branch_id` = '$branch', `upd_dt` = '$datetime' WHERE `id`='$id'");
-      
+
+
+
       
       $ins = db::query("INSERT INTO `retail_orders`(`user_id`) VALUES ('$user_id')");
       if ($upd && $ins) echo 'yes';

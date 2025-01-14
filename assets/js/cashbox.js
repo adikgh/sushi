@@ -289,16 +289,11 @@ $(document).ready(function() {
 
 	})
 
-   $('html').on('input', '.cashbox_pay_btype input', function () {
-      total = 0;
-      $('.cashbox_pay_btype input').each(function () {
-         total = total + Number($(this).attr('data-val'))         
-      })
-      $('.cashbox_pay_bsemt').html(total + ' тг')
-
-      sum = Number($('.cashbox_pay_btotol_c').attr('data-val'))
-      change = total - sum
-      if (change > 0) $('.cashbox_pay_bsems').html(change + ' тг')
+   $('html').on('input', '.btype_qr', function () {
+      total = Number($('.cashbox_pay_btotol_c').attr('data-val'))
+      sum = total - Number($('.btype_qr').attr('data-val'))         
+      $('.btype_cash').html(sum + ' тг')
+      $('.btype_cash').attr('data-val', sum)
    })
 
 
@@ -345,21 +340,17 @@ $(document).ready(function() {
          dataType: "html",
          data: ({ 
             id: btn.data('id'),
-            phone: $('.btype_phone').attr('data-val'),
+            phone: $('.btype_phone').val(),
             address: $('.btype_address').attr('data-val'),
             preorder: $('.btype_preorder').attr('data-val'),
             total: $('.cashbox_pay_btotol_c').attr('data-val'),
-            qr: $('.btype_qr input').attr('data-val'),
-            cash: $('.btype_transfer input').attr('data-val'),
+            qr: $('.btype_qr').attr('data-val'),
+            cash: $('.btype_cash').attr('data-val'),
             delivery: $('.btype_delivery').attr('data-val'),
          }),
          success: function(data){
-            if (btn.attr('data-type') == 'check') {
-               
-            } else {
-               if (data == 'yes') location.reload();
-               else if (data == 0) mess('Вам необходимо заполнить все поля')
-            }
+            if (data == 'yes') location.reload();
+            else if (data == 0) mess('Вам необходимо заполнить все поля')
             console.log(data);
          },
          beforeSend: function(){ },
@@ -386,7 +377,7 @@ $(document).ready(function() {
 	$('.pay_print').on('click', function () {
       window.open("/orders/" + "order_print.php?" + "&orderID=" + $(this).attr('data-id'), "mywin","width=570,height=570,left=250,top=50");
       // orderPrint($(this).attr('data-id'), 'order_print.php?')
-      location.reload();
+      // location.reload();
 	})
 
 
