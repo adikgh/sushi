@@ -123,8 +123,8 @@
 									<div class="uc_uin_other fr_price"><?=$buy_d['total']?></div>
 									<div class="uc_uin_other fr_price"><?=$buy_d['pay_qr']?> </div>
 									<div class="uc_uin_other fr_price"><?=$buy_d['total'] - $buy_d['pay_qr']?></div>
+									<div class="uc_uin_cn on_print " data-id="<?=$buy_d['id']?>"><i class="far fa-print"></i></div>
 								</div>
-
 							</div>
 
 							<? 
@@ -168,6 +168,7 @@
 							<div class="uc_uin_other fr_price"><?=$allorder['total']?></div>
 							<div class="uc_uin_other fr_price"><?=$allorder['pay_qr']?> </div>
 							<div class="uc_uin_other fr_price"><?=$allorder['total'] - $allorder['pay_qr']?></div>
+							<div class="uc_uin_cn on_print " data-id=""></div>
 						</div>
 					</div>
 				</div>
