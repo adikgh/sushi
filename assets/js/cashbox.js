@@ -363,6 +363,7 @@ $(document).ready(function() {
             id: btn.data('id'),
             phone: $('.btype_phone').attr('data-val'),
             address: $('.btype_address').attr('data-val'),
+            preorder: $('.btype_preorder').attr('data-val'),
             total: $('.cashbox_pay_btotol_c').attr('data-val'),
             qr: $('.btype_qr input').attr('data-val'),
             cash: $('.btype_transfer input').attr('data-val'),

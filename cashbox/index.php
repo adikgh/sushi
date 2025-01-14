@@ -159,7 +159,7 @@
 					<div class="">
 						<div class="form_im ">
 							<div class="form_span">Номер:</div>
-							<input type="text" class="form_txt fr_phone btype_phone" placeholder="8 (700) 000-00-00" data-val="0">
+							<input type="tel" class="form_txt fr_phone btype_phone" placeholder="8 (700) 000-00-00" data-val="0">
 							<i class="fal fa-phone-alt form_icon"></i>
 						</div>
 					</div>
@@ -169,8 +169,18 @@
 					<div class="">
 						<div class="form_im ">
 							<div class="form_span">Адрес:</div>
-							<input type="tel" class="form_txt btype_address" placeholder="" data-val="0">
+							<input type="text" class="form_txt btype_address" placeholder="" data-val="0">
 							<i class="fal fa-text form_icon"></i>
+						</div>
+					</div>
+
+					<br>
+
+					<div class="">
+						<div class="form_im ">
+							<div class="form_span">Егер предзаказ:</div>
+							<input type="text" class="form_txt btype_preorder" placeholder="" data-val="0">
+							<i class="fal fa-clock form_icon"></i>
 						</div>
 					</div>
 

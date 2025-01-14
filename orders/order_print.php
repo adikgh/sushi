@@ -30,11 +30,22 @@
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tbody>
         <tr class="tr_title">
-            <td colspan="3">SUSHI - PIZZA</td>
+            <td colspan="3">SUSHIMASTER</td>
         </tr>
         <tr class="tr_head">
             <td colspan="3" align="center"></td>
         </tr>
+        <? if ($cashbox_d['preorder_dt']): ?>
+            <tr class="tr_title">
+                <td colspan="3">ПРЕДЗАКАЗ</td>
+            </tr>
+            <tr class="tr">
+                <td align="left" сolspan="3"><?=$cashbox_d['preorder_dt']?></td>
+            </tr>
+            <tr class="tr_head">
+                <td colspan="3" align="center"></td>
+            </tr>
+        <? endif ?>
         <tr class="tr">
             <td colspan="3">
                 <br><?=$cashbox_d['upd_dt']?>
