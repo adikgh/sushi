@@ -1307,7 +1307,7 @@ a.uc_ui{cursor:pointer}
 /* table name */
 .uc_uiln{
 	position: relative;
-	width: 40%;
+	width: 50%;
 	height: 100%;
 	/* padding-right: 20px; */
 	display: flex;
@@ -1450,12 +1450,50 @@ a.uc_ui{cursor:pointer}
 /* table list */
 .uc_uil{
 	position: relative;
-	width: calc(60% - 38px);
+	width: 50%;
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 	grid-gap: 5px;
 	padding-left: 5px;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
+
+
+
+
+
+
+.uc_uilf1{
+	width: calc(100% - (38px * 2) - 40px);
+}
+
+.uc_uilf1c{
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	text-align: right;
+}
+.uc_uilf1c .uc_uin_other{
+	display: inline;
+	width: auto;
+	font-size: 16px;
+}
+.cashbox_qn{
+	font-weight: 700;
+}
+
+.cashbox_sum{
+	margin-top: 10px;
+	width: 100% !important;
+	font-size: 22px !important;
+	font-weight: 700 !important;
+	text-align: right;
+}
+
+
 
 
 .uc_uil2{
@@ -1479,9 +1517,6 @@ a.uc_ui{cursor:pointer}
 	padding-right: 10px;
 	font-size: 14px;
 	line-height: 24px;
-
-	display: flex;
-	align-items: center;
 }
 .uc_uin_other:last-child{
 	padding-right: 5px;
@@ -1734,6 +1769,14 @@ input.uc_uin_calc_q:focus{border:1px solid var(--bl	)}
 
 
 
+.uc_uilf2{
+	width: calc(38px * 2 + 10px);
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 /*  */
 .uc_uin_cn{
 	position: relative;
@@ -1745,9 +1788,19 @@ input.uc_uin_calc_q:focus{border:1px solid var(--bl	)}
 	transition: .3s;
 	border-radius: 50%;
 	cursor: pointer;
+	background: var(--cl);
+	color: var(--wh);
+	/* margin-top: 7px; */
+	font-size: 14px;
 }
-.uc_uin_cn:hover{background:var(--cl1)}
-.uc_uin_cn:nth-last-child(2){margin-right:5px}
+.uc_uin_cn:hover{background:var(--cl7)}
+.uc_uin_cn:first-child{	
+	margin-top: 0;
+}
+.cashbox_remove{
+	background: var(--cm);
+}
+.cashbox_remove:hover{background:var(--cm7)}
 
 
 /*  */

@@ -13,7 +13,7 @@
 		$cashbox_id = (mysqli_fetch_assoc(db::query("SELECT * FROM `retail_orders` order by id desc")))['id'] + 1;
 		$ins = db::query("INSERT INTO `retail_orders`(`id`, `user_id`) VALUES ('$cashbox_id', '$user_id')");
 	}
-	$cashboxp = db::query("select * from retail_orders_products where order_id = '$cashbox_id' order by ins_dt desc");
+	$cashboxp = db::query("select * from retail_orders_products where order_id = '$cashbox_id' order by ins_dt asc");
 	$number = 0; $total = 0;
 
 
@@ -28,65 +28,6 @@
 	<div class="bl_c">
 
 		<div class="hup_bl">
-
-			<div class="cash_bl1">
-
-				<div class="cash_bl1_l">
-					<div class="uc_uh">
-						<div class="uc_uh2">
-							<!-- <div class="uc_uh_number">#</div> -->
-							<div class="uc_uh_name">Наименование</div>
-							<div class="uc_uil">
-								<div class="uc_uh_other">Цена</div>
-								<div class="uc_uh_other">Количество</div>
-								<div class="uc_uh_other">Сумма</div>
-							</div>
-						</div>
-						<!-- <div class="uc_uh_cn"></div> -->
-					</div>
-				</div>
-
-				<div class="cash_bl1_r">
-					<div class="cash_bl1_rc">
-						<div class="uc_u <?=($view_pr?'uc_u2':'')?>">
-							<div class="uc_uc lazy_c">
-								<? if (mysqli_num_rows($cashboxp) != 0): ?>
-									<? while ($sel_d = mysqli_fetch_assoc($cashboxp)): ?>
-										<? $number++; $sum = $sel_d['quantity'] * $sel_d['price']; $total = $total + $sum; ?>
-										<? $product_d = product::product($sel_d['product_id']); ?>
-	
-										<div class="uc_ui uc_ui2" data-id="<?=$sel_d['id']?>" data-item-id="<?=$product_d['id']?>" data-pr="<?=$sel_d['price']?>" data-qn="<?=$sel_d['quantity']?>" data-sum="<?=$sum?>">
-											<!-- <div class="uc_ui_number"><?=$number?></div> -->
-											<div class="uc_uiln">
-												<!-- <div class="uc_ui_img lazy_img" data-src="/assets/uploads/products/<?=$pitem_d['img']?>">
-													<?=($pitem_d['img']!=null?'':'<i class="fal fa-box"></i>')?>
-												</div> -->
-												<div class="uc_uinu">
-													<div class="uc_ui_name"><?=$number?>. <?=$product_d['name_ru']?></div>
-												</div>
-											</div>
-											<div class="uc_uil">
-												<!-- <div class="uc_uin_other">
-													<input type="tel" class="uc_uin_calc_q cashbox_pr" value="<?=$sel_d['price']?>" data-lenght="1" />
-												</div> -->
-												<div class="uc_uin_other fr_price cashbox_pr"><?=$sel_d['price']?></div>
-												<div class="uc_uin_other" data-max="<?=$quantity?>">
-													<input type="tel" class="uc_uin_calc_q fr_number3 cashbox_qn" value="<?=$sel_d['quantity']?>" data-lenght="1" />
-												</div>
-												<div class="uc_uin_other fr_price cashbox_sum"><?=$sum?></div>
-											</div>
-											<div class="uc_uin_cn cashbox_remove" data-id="<?=$sel_d['id']?>"><i class="fal fa-trash-alt"></i></div>
-										</div>
-									<? endwhile ?>
-								<? else: ?> 
-									<div class="ds_nr"><p>Пустой список</p></div>
-								<? endif ?>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
 
 			<div class="hup_r">
 				<div class="">
@@ -112,14 +53,90 @@
 				</div>
 			</div>
 
-			<div class="cash_bl1_rb <?=($total==0?'dsp_n':'')?>">
-				<div class="cash_bl1_rbl">
-					<div class="cash_bl1_rblin">Итого:</div>
-					<div class="cash_bl1_rblip cashbox_total fr_price" data-total="<?=$total?>"><?=$total?></div>
+			<div class="cash_bl1">
+
+				<div class="cash_bl1_l">
+					<div class="uc_uh">
+						<div class="uc_uh2">
+							<div class="uc_uiln">Наименование</div>
+							<div class="uc_uil">
+								<div class="uc_uilf1">
+									<div class="uc_uilf1c">
+										<div class="uc_uh_other">Цена</div>
+										<div class="uc_uh_other">Количество</div>
+									</div>
+								</div>
+								<div class="uc_uilf2"></div>
+							</div>
+						</div>
+						<!-- <div class="uc_uh_cn"></div> -->
+					</div>
 				</div>
-				<div class="cash_bl1_rbr">
-					<div class="btn cashbox_pay" data-id="<?=$cashbox_id?>">Оплата</div>
+
+				<div class="cash_bl1_r">
+					<div class="cash_bl1_rc">
+						<div class="uc_u <?=($view_pr?'uc_u2':'')?>">
+							<div class="uc_uc lazy_c">
+								<? if (mysqli_num_rows($cashboxp) != 0): ?>
+									<? while ($sel_d = mysqli_fetch_assoc($cashboxp)): ?>
+										<? $number++; $sum = $sel_d['quantity'] * $sel_d['price']; $total = $total + $sum; ?>
+										<? $product_d = product::product($sel_d['product_id']); ?>
+	
+										<div class="uc_ui uc_ui2" data-id="<?=$sel_d['id']?>" data-item-id="<?=$product_d['id']?>" data-pr="<?=$sel_d['price']?>" data-qn="<?=$sel_d['quantity']?>" data-sum="<?=$sum?>">
+											<div class="uc_uiln">
+												<!-- <div class="uc_ui_img lazy_img" data-src="/assets/uploads/products/<?=$pitem_d['img']?>">
+													<?=($pitem_d['img']!=null?'':'<i class="fal fa-box"></i>')?>
+												</div> -->
+												<div class="uc_uinu">
+													<div class="uc_ui_name"><?=$number?>. <?=$product_d['name_ru']?></div>
+												</div>
+											</div>
+											<div class="uc_uil">
+												<div class="uc_uilf1">
+													<div class="uc_uilf1c" data-qn="<?=$sel_d['quantity']?>">
+														<!-- <div class="uc_uin_other">
+															<input type="tel" class="uc_uin_calc_q cashbox_pr" value="<?=$sel_d['price']?>" data-lenght="1" />
+														</div> -->
+														<!-- <div class="uc_uin_other" data-max="<?=$quantity?>">
+															<input type="tel" class="uc_uin_calc_q fr_number3 cashbox_qn" value="<?=$sel_d['quantity']?>" data-lenght="1" />
+														</div> -->
+														<div class="uc_uin_other fr_price cashbox_pr"><?=$sel_d['price']?></div>
+														<div class="uc_uin_other cashbox_qn">х <?=$sel_d['quantity']?> шт</div>
+													</div>
+													<div class="uc_uin_other fr_price cashbox_sum"><?=$sum?></div>
+												</div>
+												<div class="uc_uilf2">
+													<div class="uc_uin_cn cashbox_plus" data-id="<?=$sel_d['id']?>"><i class="far fa-plus"></i></div>
+													<? if ($sel_d['quantity'] == 1): ?>
+														<div class="uc_uin_cn cashbox_remove" data-id="<?=$sel_d['id']?>"><i class="far fa-trash-alt"></i></div>
+														<div class="uc_uin_cn cashbox_minus dsp_n" data-id="<?=$sel_d['id']?>"><i class="far fa-minus"></i></div>
+													<? else: ?>
+														<div class="uc_uin_cn cashbox_remove dsp_n" data-id="<?=$sel_d['id']?>"><i class="far fa-trash-alt"></i></div>
+														<div class="uc_uin_cn cashbox_minus " data-id="<?=$sel_d['id']?>"><i class="far fa-minus"></i></div>
+													<? endif ?>
+
+												</div>
+											</div>
+										</div>
+									<? endwhile ?>
+								<? else: ?> 
+									<div class="ds_nr"><p>Пустой список</p></div>
+								<? endif ?>
+							</div>
+						</div>
+					</div>
 				</div>
+
+				<div class="cash_bl1_rb <?=($total==0?'dsp_n':'')?>">
+					<div class="cash_bl1_rbl">
+						<div class="cash_bl1_rblin">Итого:</div>
+						<div class="cash_bl1_rblip cashbox_total fr_price" data-total="<?=$total?>"><?=$total?></div>
+					</div>
+					<div class="cash_bl1_rbr">
+						<div class="btn cashbox_pay" data-id="<?=$cashbox_id?>">Оплата</div>
+					</div>
+				</div>
+
 			</div>
 
 		</div>
@@ -138,6 +155,26 @@
 			</div>
 			<div class="pop_bl_cl">
 				<div class="form_c">
+
+					<div class="">
+						<div class="form_im ">
+							<div class="form_span">Номер:</div>
+							<input type="tel" class="form_txt fr_phone" placeholder="8 (700) 000-00-00" data-val="0">
+							<i class="fal fa-tenge form_icon"></i>
+						</div>
+					</div>
+
+					<br>
+					
+					<div class="">
+						<div class="form_im ">
+							<div class="form_span">Адрес:</div>
+							<input type="text" class="form_txt " placeholder="" data-val="0">
+							<i class="fal fa-tenge form_icon"></i>
+						</div>
+					</div>
+
+					<br>
 
 					<div class="">
 						<div class="form_im ">

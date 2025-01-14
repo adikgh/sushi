@@ -114,6 +114,56 @@ $(document).ready(function() {
       })
 	})
 
+   // cashbox_remove
+	$('.cashbox_plus').on('click', function () {
+		btn = $(this)
+      $.ajax({
+         url: "/cashbox/get.php?cashbox_plus",
+         type: "POST",
+         dataType: "html",
+         data: ({ id: btn.data('id'), }),
+         success: function(data){ 
+            if (data == 'yes') location.reload();
+            else console.log(data);
+         },
+         beforeSend: function(){ },
+         error: function(data){ }
+      })
+	})
+
+   // cashbox_remove
+	$('.cashbox_minus').on('click', function () {
+		btn = $(this)
+      $.ajax({
+         url: "/cashbox/get.php?cashbox_minus",
+         type: "POST",
+         dataType: "html",
+         data: ({ id: btn.data('id'), }),
+         success: function(data){ 
+            if (data == 'yes') location.reload();
+            else console.log(data);
+         },
+         beforeSend: function(){ },
+         error: function(data){ }
+      })
+	})
+   // cashbox_remove
+	$('.cashbox_plus').on('click', function () {
+		btn = $(this)
+      $.ajax({
+         url: "/cashbox/get.php?cashbox_plus",
+         type: "POST",
+         dataType: "html",
+         data: ({ id: btn.data('id'), }),
+         success: function(data){ 
+            if (data == 'yes') location.reload();
+            else console.log(data);
+         },
+         beforeSend: function(){ },
+         error: function(data){ }
+      })
+	})
+
 
 
 

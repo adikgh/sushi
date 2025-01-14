@@ -39,7 +39,7 @@
 /*  */
 .cash_bl1{
 	position: relative;
-	width: calc(50% - 5px);
+	width: 45%;
 	height: calc(100vh - 44px - 10px);
 	background: var(--wh);
 }
@@ -608,10 +608,10 @@
 /*  */
 .cash_bl1_rb{
 	position: fixed;
-   z-index: 4990;
+	z-index: 4990;
 	padding: 0 35px 0 30px;
 	min-height: 74px;
-   height: 74px;
+	height: 74px;
 	transition: .3s;
 	bottom: 0;
 	right: 0;
@@ -622,8 +622,8 @@
 	background: var(--wh);
 	border-top-left-radius: 5px;
 	/* box-shadow: -2px 0 10px 2px var(--bl1); */
-   border-top: 1px solid var(--gr5);
-   border-left: 1px solid var(--gr5);
+	border-top: 1px solid var(--gr5);
+	border-left: 1px solid var(--gr5);
 }
 @media (max-width: 500px) {
    .cash_bl1_rb{
@@ -780,7 +780,7 @@
 
 
 .hup_r{
-	width: 50%;
+	width: calc(55% - 5px);
 }
 .hup_rct{
 	position: relative;

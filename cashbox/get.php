@@ -96,6 +96,22 @@
       exit();
 	}
 
+   // cashbox_plus
+	if(isset($_GET['cashbox_plus'])) {
+		$id = strip_tags($_POST['id']);
+      $upd1 = db::query("UPDATE `retail_orders_products` SET `quantity` = `quantity` + 1 WHERE id = '$id';");
+      if ($upd1) echo 'yes'; else echo 'none';
+      exit();
+	}
+
+   // cashbox_plus
+	if(isset($_GET['cashbox_minus'])) {
+		$id = strip_tags($_POST['id']);
+      $upd1 = db::query("UPDATE `retail_orders_products` SET `quantity` = `quantity` - 1 WHERE id = '$id';");
+      if ($upd1) echo 'yes'; else echo 'none';
+      exit();
+	}
+
 
    // cashbox_pay
 	if(isset($_GET['cashbox_pay'])) {
