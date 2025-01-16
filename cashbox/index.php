@@ -211,6 +211,15 @@
 						</div>
 					</div>
 
+					<br>
+
+					<div class="form_im">
+						<!-- <div class="form_span">Тип оплаты:</div> -->
+						<div class="form_im_slo " data-type-name="RED" data-nall="">
+							<div class="form_im_slo_i btype_red" form_im_slo_act data-type="10">RED</div>
+						</div>
+					</div>
+
 					<br><br>
 					
 					<div class="cashbox_pay_btotol">

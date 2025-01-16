@@ -243,51 +243,51 @@ $(document).ready(function() {
 
 
    
-	$('.form_im_slo_i').click(function(){
-		$('.form_im_slo_i').removeClass('form_im_slo_act')
-		$(this).addClass('form_im_slo_act')
-      $('.form_im_slo').attr('data-type-name', $(this).attr('data-type'))
-		$(this).addClass('form_im_slo_act')
+	// $('.form_im_slo_i').click(function(){
+	// 	$('.form_im_slo_i').removeClass('form_im_slo_act')
+	// 	$(this).addClass('form_im_slo_act')
+   //    $('.form_im_slo').attr('data-type-name', $(this).attr('data-type'))
+	// 	$(this).addClass('form_im_slo_act')
 
-      total = $('.cashbox_pay_btotol_c').attr('data-val')
+   //    total = $('.cashbox_pay_btotol_c').attr('data-val')
 
-      $('.cashbox_pay_btype .form_im').addClass('dsp_n')
-      // $('.cashbox_pay_bsem').addClass('dsp_n')
-      $('.cashbox_pay_btype .form_im input').attr('disabled', '')
-      $('.cashbox_pay_btype .btype_cash input').removeAttr('disabled')
-      $('.cashbox_pay_btype .form_im input').val('')
-      $('.cashbox_pay_btype .form_im input').attr('data-val', '')
+   //    $('.cashbox_pay_btype .form_im').addClass('dsp_n')
+   //    // $('.cashbox_pay_bsem').addClass('dsp_n')
+   //    $('.cashbox_pay_btype .form_im input').attr('disabled', '')
+   //    $('.cashbox_pay_btype .btype_cash input').removeAttr('disabled')
+   //    $('.cashbox_pay_btype .form_im input').val('')
+   //    $('.cashbox_pay_btype .form_im input').attr('data-val', '')
 
-      $('.cashbox_pay_bsemt').html(total + ' тг')
-      $('.cashbox_pay_bsems').html(0 + ' тг')
+   //    $('.cashbox_pay_bsemt').html(total + ' тг')
+   //    $('.cashbox_pay_bsems').html(0 + ' тг')
 
-      if ($(this).attr('data-type') == 'qr') {
-         $('.cashbox_pay_btype .btype_qr').removeClass('dsp_n')
-         $('.cashbox_pay_btype .btype_qr input').val(total + ' тг')
-         $('.cashbox_pay_btype .btype_qr input').attr('data-val', total)
-      } else if ($(this).attr('data-type') == 'cash') {
-         $('.cashbox_pay_btype .btype_transfer').removeClass('dsp_n')
-         $('.cashbox_pay_btype .btype_transfer input').val(total + ' тг')
-         $('.cashbox_pay_btype .btype_transfer input').attr('data-val', total)
-      // } else if ($(this).attr('data-type') == 'cash') {
-      //    $('.cashbox_pay_btype .btype_cash').removeClass('dsp_n')
-      //    $('.cashbox_pay_bsem').removeClass('dsp_n')
-      } else if ($(this).attr('data-type') == 'card') {
-         $('.cashbox_pay_btype .btype_card').removeClass('dsp_n')
-         $('.cashbox_pay_btype .btype_card input').val(total + ' тг')
-         $('.cashbox_pay_btype .btype_card input').attr('data-val', total)
-      } else if ($(this).attr('data-type') == 'mixed') {
-         $('.cashbox_pay_btype .form_im').removeClass('dsp_n')
-         $('.cashbox_pay_btype .form_im input').removeAttr('disabled')
-         $('.cashbox_pay_btype .btype_qr input').val(total + ' тг')
-         $('.cashbox_pay_btype .btype_qr input').attr('data-val', total)
-         // $('.cashbox_pay_bsem').removeClass('dsp_n')
-      }
+   //    if ($(this).attr('data-type') == 'qr') {
+   //       $('.cashbox_pay_btype .btype_qr').removeClass('dsp_n')
+   //       $('.cashbox_pay_btype .btype_qr input').val(total + ' тг')
+   //       $('.cashbox_pay_btype .btype_qr input').attr('data-val', total)
+   //    } else if ($(this).attr('data-type') == 'cash') {
+   //       $('.cashbox_pay_btype .btype_transfer').removeClass('dsp_n')
+   //       $('.cashbox_pay_btype .btype_transfer input').val(total + ' тг')
+   //       $('.cashbox_pay_btype .btype_transfer input').attr('data-val', total)
+   //    // } else if ($(this).attr('data-type') == 'cash') {
+   //    //    $('.cashbox_pay_btype .btype_cash').removeClass('dsp_n')
+   //    //    $('.cashbox_pay_bsem').removeClass('dsp_n')
+   //    } else if ($(this).attr('data-type') == 'card') {
+   //       $('.cashbox_pay_btype .btype_card').removeClass('dsp_n')
+   //       $('.cashbox_pay_btype .btype_card input').val(total + ' тг')
+   //       $('.cashbox_pay_btype .btype_card input').attr('data-val', total)
+   //    } else if ($(this).attr('data-type') == 'mixed') {
+   //       $('.cashbox_pay_btype .form_im').removeClass('dsp_n')
+   //       $('.cashbox_pay_btype .form_im input').removeAttr('disabled')
+   //       $('.cashbox_pay_btype .btype_qr input').val(total + ' тг')
+   //       $('.cashbox_pay_btype .btype_qr input').attr('data-val', total)
+   //       // $('.cashbox_pay_bsem').removeClass('dsp_n')
+   //    }
 
-      // $('.btype_delivery').removeClass('dsp_n')
-      // $('.btype_delivery input').removeAttr('disabled')
+   //    // $('.btype_delivery').removeClass('dsp_n')
+   //    // $('.btype_delivery input').removeAttr('disabled')
 
-	})
+	// })
 
    $('html').on('input', '.btype_qr', function () {
       total = Number($('.cashbox_pay_btotol_c').attr('data-val'))
@@ -308,6 +308,34 @@ $(document).ready(function() {
       $('.btype_cash').html(delivery + sum + ' тг')
       $('.btype_cash').attr('data-val', delivery + sum)
    })
+
+
+   $('.form_im_slo_i').click(function(){
+		// $('.form_im_slo_i').removeClass('form_im_slo_act')
+      // $('.form_im_slo').attr('data-type-name', $(this).attr('data-type'))
+		// $(this).addClass('form_im_slo_act')
+
+      if (!$(this).hasClass('form_im_slo_act')) {
+         sum = Number($('.cashbox_pay_btotol_c').attr('data-val'))
+         $(this).attr('data-nall', sum)
+
+         sum_red = sum + (sum / 10)
+         $('.cashbox_pay_btotol_c').attr('data-val', sum_red)
+         $('.cashbox_pay_btotol_c').html(sum_red + ' тг')
+         $('.cashbox_pay_bsemt').html(sum_red + ' тг')
+         $('.btype_cash').html(sum_red + ' тг')
+         $('.btype_cash').attr('data-val', sum_red)
+      } else {
+         sum = Number($(this).attr('data-nall'))
+         $('.cashbox_pay_btotol_c').attr('data-val', sum)
+         $('.cashbox_pay_btotol_c').html(sum + ' тг')
+         $('.cashbox_pay_bsemt').html(sum + ' тг')
+         $('.btype_cash').html(sum + ' тг')
+         $('.btype_cash').attr('data-val', sum)
+      }
+
+		$(this).toggleClass('form_im_slo_act')
+	})
 
 
    // $('html').on('input', '.cashbox_pay_btype input', function () {
