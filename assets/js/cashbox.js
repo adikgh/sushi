@@ -352,7 +352,7 @@ $(document).ready(function() {
             delivery: $('.btype_delivery').attr('data-val'),
          }),
          success: function(data){
-            if (data == 'yes') location.reload();
+            if (data == 'yes')  location.href = '/cashbox/';  //location.reload();
             else if (data == 0) mess('Вам необходимо заполнить все поля')
             console.log(data);
          },

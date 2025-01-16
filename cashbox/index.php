@@ -4,8 +4,11 @@
 	// if (!$user_id) header('location: /');
 
 
-	// 
-	$cashbox = db::query("select * from retail_orders where user_id = '$user_id' and paid = 0 order by id desc limit 1");
+
+	if (@$_GET['id']) {
+		$cashbox_id = $_GET['id'];
+		$cashbox = db::query("select * from retail_orders where id = '$cashbox_id'");
+	} else $cashbox = db::query("select * from retail_orders where user_id = '$user_id' and paid = 0 order by id desc limit 1");
 	if (mysqli_num_rows($cashbox)) {
 		$cashbox_d = mysqli_fetch_assoc($cashbox);
 		$cashbox_id = $cashbox_d['id'];
@@ -15,6 +18,8 @@
 	}
 	$cashboxp = db::query("select * from retail_orders_products where order_id = '$cashbox_id' order by ins_dt asc");
 	$number = 0; $total = 0;
+
+
 
 
 	// 

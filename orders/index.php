@@ -123,6 +123,7 @@
 									<div class="uc_uin_other fr_price"><?=$buy_d['total']?></div>
 									<div class="uc_uin_other fr_price"><?=$buy_d['pay_qr']?> </div>
 									<div class="uc_uin_other fr_price"><?=$buy_d['total'] - $buy_d['pay_qr']?></div>
+									<a class="uc_uin_cn on_ubd " data-id="<?=$buy_d['id']?>" href="/cashbox/?id=<?=$buy_d['id']?>&type=ubd"><i class="far fa-pen"></i></a>
 									<div class="uc_uin_cn on_print " data-id="<?=$buy_d['id']?>"><i class="far fa-print"></i></div>
 								</div>
 							</div>
