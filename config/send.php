@@ -1,11 +1,9 @@
 <? include 'core.php';
 
-	$token = "5542688063:AAGP-xAW5Fy8ZJ0BIbelRRqWI4KFoKn-Igw";
-	$chat_id = "-761095796";
-	// https://api.telegram.org/bot5542688063:AAGP-xAW5Fy8ZJ0BIbelRRqWI4KFoKn-Igw/getUpdates
+	// https://api.telegram.org/bot1581082911:AAEKW20w_-5V0Wx9tzhyThV2pjCgZtCjyc8/getUpdates
 
-	$token = "1921836439:AAEdLQlmhwkwbuznS5E0xmAbfEzOhPJEANg";
-	$chat_id = "-569554715";
+	$token = "1581082911:AAEKW20w_-5V0Wx9tzhyThV2pjCgZtCjyc8";
+	$chat_id = "-1002461390168";
 	
 	if(isset($_GET['mess'])) {
 		$name  = strip_tags($_POST['name']);

@@ -30,7 +30,7 @@
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tbody>
         <tr class="tr_title">
-            <td colspan="3">SUSHIMASTER</td>
+            <td colspan="3"><?=($cashbox_d['branch_id']==2?'SUSHIMASTER':'BANZAI')?></td>
         </tr>
         <tr class="tr_head">
             <td colspan="3" align="center"></td>
@@ -49,28 +49,17 @@
         <tr class="tr">
             <td colspan="3">
                 <br><?=$cashbox_d['upd_dt']?>
-                <br>№ <?=$cashbox_d['number']?>
             </td>
         </tr>
         <tr class="tr">
-            <td colspan="3"></td>
+            <td colspan="3"><b>Номер заказ: <?=$cashbox_d['number']?></b></td>
         </tr>
-        <tr class="tr_border">
-            <td><b>Клиент</b></td>
-        </tr>
-
-        <tr class="tr">
-            <td align="left" сolspan="3">Номер: <?=$cashbox_d['phone']?></td>
-        </tr>
-        <tr class="tr">
-            <td align="left" сolspan="3">Адрес: <?=$cashbox_d['address']?></td>
-        </tr>
-
         <tr class="tr">
             <td colspan="3"></td>
         </tr>
+
         <tr class="tr_border">
-            <td><b>Наименование</b></td>
+            <td><br><b>Наименование</b></td>
             <td width="40" align="center"><b>Кол.</b></td>
             <td width="50" align="right"><b>Сумма</b></td>
         </tr>
@@ -106,9 +95,24 @@
             <td></td>
             <td align="right"><b><?=$cashbox_d['total'] - $cashbox_d['pay_qr']?></b></td>
         </tr>
-        <tr class="tr">
-            <td align="left" сolspan="3">Способ оплаты: Наличный</td>
+
+        <!-- <tr style="height:20px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr> -->
+        <tr class="tr_border">
+            <td><br><b>Клиент</b></td>
         </tr>
+        <tr class="tr">
+            <td align="left" сolspan="3">Номер: <?=$cashbox_d['phone']?></td>
+        </tr>
+        <tr class="tr">
+            <td align="left" сolspan="3">Адрес: <?=$cashbox_d['address']?></td>
+        </tr>
+        <!-- <tr class="tr">
+            <td align="left" сolspan="3">Способ оплаты: </td>
+        </tr> -->
         <tr class="tr_promo" valign="middle">
             <td align="center" colspan="3"></td>
         </tr>

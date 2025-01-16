@@ -60,7 +60,7 @@
 
    // setting
    $site = mysqli_fetch_array(db::query("select * from `site` where id = 1"));
-   $ver = 1.0307;
+   $ver = 1.0308;
    $site_set = [
       'menu' => true,
       'search' => true,
@@ -114,8 +114,7 @@
 
 
    // 
-   $token = "5542688063:AAGP-xAW5Fy8ZJ0BIbelRRqWI4KFoKn-Igw";
-	$chat_id = "-1001761273817";
-
+	$token = "1581082911:AAEKW20w_-5V0Wx9tzhyThV2pjCgZtCjyc8";
+	$chat_id = "-1002461390168";
 
 	// $user_id = 1;
