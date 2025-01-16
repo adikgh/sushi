@@ -4,6 +4,7 @@
 
 	$token = "1581082911:AAEKW20w_-5V0Wx9tzhyThV2pjCgZtCjyc8";
 	$chat_id = "-1002461390168";
+	$chat_id = "-1002262540522";
 	
 	if(isset($_GET['mess'])) {
 		$name  = strip_tags($_POST['name']);

@@ -143,23 +143,22 @@
 
    
       //
-      // if ($) 
-      // $txt = '';
-      // $arr = array(
-		// 	'Номер заказ: ' => $cashbox_number,
-		// 	'Телефон: ' => $phone,
-		// 	'Адрес: ' => $address,
-		// 	'Предоплата: ' => $qr,
-		// 	'Наличный: ' => $cash,
-		// 	'Жалпы: '   => $total,
-		// );
-		// foreach ($arr as $key => $value) {$txt .= "<b>".$key."</b> ".$value."%0A";};
-		// $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
-      // && $sendToTelegram
+      if ($branch == 1) $chat_id = "-1002262540522"; else $chat_id = "-1002461390168";
+      $txt = '';
+      $arr = array(
+			'Номер заказ: ' => $cashbox_number,
+			'Телефон: ' => $phone,
+			'Адрес: ' => $address,
+			'Предоплата: ' => $qr,
+			'Наличный: ' => $cash,
+			'Жалпы: '   => $total,
+		);
+		foreach ($arr as $key => $value) {$txt .= "<b>".$key."</b> ".$value."%0A";};
+		$sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
 
       // 
       $ins = db::query("INSERT INTO `retail_orders`(`user_id`) VALUES ('$user_id')");
-      if ($upd && $ins) echo 'yes'; else echo "error";
+      if ($upd && $ins && $sendToTelegram) echo 'yes'; else echo "error";
 
       exit();
 	}
