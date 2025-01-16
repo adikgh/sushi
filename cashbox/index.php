@@ -239,7 +239,7 @@
 
 					<div class="form_im">
 						<!-- <div class="btn cashbox_pay2" data-id="<?=$cashbox_id?>">Продать</div> -->
-						<div class="btn btn_cl cashbox_pay2 pay_print" data-id="<?=$cashbox_id?>" data-type="check" Продать и распечатать чек>Сату және чек шығару</div>
+						<div class="btn btn_cl cashbox_pay2 pay_print" data-id="<?=$cashbox_id?>" data-nm="<?=$cashbox_d['number']?>" data-type="check" Продать и распечатать чек>Сату және чек шығару</div>
 					</div>
 				</div>
 

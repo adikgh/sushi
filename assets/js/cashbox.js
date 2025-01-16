@@ -342,6 +342,7 @@ $(document).ready(function() {
          dataType: "html",
          data: ({ 
             id: btn.data('id'),
+            nm: btn.data('nm'),
             phone: $('.btype_phone').val(),
             address: $('.btype_address').attr('data-val'),
             add: $('.btype_add').attr('data-val'),
