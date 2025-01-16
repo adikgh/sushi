@@ -221,7 +221,7 @@
 					<div class="cashbox_pay_btype">
 						<div class="form_im">
 							<div class="form_span">Алдын ала төлем (предоплата):</div>
-							<input type="tel" class="form_txt fr_price btype_qr" placeholder="0" value="<?=$total?>" data-val="<?=$total?>">
+							<input type="tel" class="form_txt fr_price btype_qr" placeholder="0" value="" data-val="">
 							<i class="fal fa-tenge form_icon"></i>
 						</div>
 					</div>
@@ -229,7 +229,7 @@
 					<div class="cashbox_pay_bsem">
 						<div class="form_im">
 							<div class="form_span" Наличный>Қолма-қол:</div>
-							<div class="cashbox_pay_bsemc btype_cash fr_price">0</div>
+							<div class="cashbox_pay_bsemc btype_cash fr_price"><?=$total?></div>
 						</div>
 						<!-- <div class="form_im">
 							<div class="form_span" Итог>Қорытынды:</div>

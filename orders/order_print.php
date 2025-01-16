@@ -46,6 +46,11 @@
                 <td colspan="3" align="center"></td>
             </tr>
         <? endif ?>
+        <? if ($cashbox_d['order_status']): ?>
+            <tr class="tr_title">
+                <td colspan="3">СОБОЙ</td>
+            </tr>
+        <? endif ?>
         <tr class="tr">
             <td colspan="3">
                 <br><?=$cashbox_d['upd_dt']?>
