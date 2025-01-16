@@ -46,7 +46,7 @@
                 <td colspan="3" align="center"></td>
             </tr>
         <? endif ?>
-        <? if ($cashbox_d['order_status']): ?>
+        <? if ($cashbox_d['order_status'] == 2): ?>
             <tr class="tr_title">
                 <td colspan="3">СОБОЙ</td>
             </tr>
