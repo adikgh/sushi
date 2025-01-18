@@ -113,7 +113,7 @@
 
 
  $start_cdate = date('Y-m-d 06:00:00', strtotime("$date -1 day"));
- $end_cdate = date('Y-m-d 06:00:00');
+ $end_cdate = date("Y-m-d 06:00:00", strtotime("$start_cdate +1 day"));
  
 
  // url
