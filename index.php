@@ -1,8 +1,9 @@
 <? include "config/core.php";
 
    // 
-   if ($user_id) header('location: /cashbox');
+   // if ($user_id) header('location: /cashbox');
    // header('location: /cashbox/');
+   header('location: /dev.php');
 
 
 	// site setting
